@@ -1,0 +1,128 @@
+.main-body{
+    opacity: 1;
+    background: #F5F9FF;
+    height:100vmax;
+    
+}
+.header-form{
+    width:100%;
+height: 55px;
+background: var(--unnamed-color-307fe2) 0% 0% no-repeat padding-box;
+background: #307FE2 0% 0% no-repeat padding-box;
+opacity: 1;
+display: flex;
+justify-content: space-between;
+}
+.txt{
+    padding-left: 13px;
+    padding-top: 18px;
+    height: 19px;
+    font: normal normal 900 16px/26px Lato;
+letter-spacing: 0.72px;
+color: #FFFFFF;
+opacity: 1;
+}
+.notification-icon{
+    height: 20px;
+    padding-top: 18px;
+    margin-right:30px;
+}
+.logout{
+    width:21px;
+    margin-right:16px;
+}
+.label-text{
+    font: normal normal 900 18px/36px Lato;
+letter-spacing: 0.81px;
+color: #307FE2;
+opacity: 1;
+margin-left: 15px;
+}
+.new-form{
+    margin-top:20px;
+    opacity: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.date{
+    background: #E2EEFD 0% 0% no-repeat padding-box;
+border: 1px solid #307FE2;
+border-radius: 8px;
+font: normal normal normal 14px/28px Lato;
+letter-spacing: 0.63px;
+color: #6C6C6C;
+opacity: 1;
+margin-left:18px;
+width: 180px;
+height: 40px;
+padding-left: 5px;
+}
+.label-text-one{
+    font: normal normal 900 18px/36px Lato;
+letter-spacing: 0.81px;
+color: #307FE2;
+opacity: 1;
+margin-left: 15px;
+}
+.date-one{
+    background: #E2EEFD 0% 0% no-repeat padding-box;
+border: 1px solid #307FE2;
+border-radius: 8px;
+font: normal normal normal 14px/28px Lato;
+letter-spacing: 0.63px;
+color: #6C6C6C;
+opacity: 1;
+margin-left:38px;
+width: 180px;
+height: 40px;
+margin-top:5px;
+padding-left: 5px;
+}
+.select-form{
+    border: 1px solid var(--unnamed-color-307fe2);
+background: #E2EEFD 0% 0% no-repeat padding-box;
+border: 1px solid #307FE2;
+border-radius: 8px;
+opacity: 1;
+font: normal normal normal 14px/28px Lato;
+letter-spacing: 0.63px;
+color: #6C6C6C;
+height:40px;
+margin-left: 19px;
+width: 190px;
+margin-top: 19px;
+}
+.day-calc{
+height: 40px;
+border: 1px solid var(--unnamed-color-307fe2);
+background: #E2EEFD 0% 0% no-repeat padding-box;
+border: 1px solid #307FE2;
+border-radius: 8px;
+margin-left: 19px;
+opacity: 1;
+width: 190px;
+margin-top: 20px;
+}
+.data{
+    display: flex;
+    justify-content: space-between;
+}
+.label-text-new{
+    font: normal normal 900 18px/36px Lato;
+letter-spacing: 0.81px;
+color: #307FE2;
+opacity: 1;
+margin-left: 15px;
+margin-top: 30px;
+}
+.reason{
+    height: 169px;
+background: #E2EEFD 0% 0% no-repeat padding-box;
+border: 1px solid #307FE2;
+border-radius: 8px;
+opacity: 1;
+margin-top: 30px;
+margin-left: 50px;
+width: 190px;
+}

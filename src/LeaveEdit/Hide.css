@@ -1,0 +1,39 @@
+.set{
+    position: relative;
+    margin-top:0px;
+    margin-right: 10px;
+    background-color: #E2EEFD;
+    float: right;
+  
+  }
+  
+  .m{
+    width:158px;
+    height: 139px;
+    position:relative;
+    z-index:1;
+  height: 139px;
+  border: 1px solid var(--unnamed-color-307fe2);
+  background: #E2EEFD 0% 0% no-repeat padding-box;
+  border: 1px solid #307FE2;
+  border-radius: 10px;
+  margin-top:10px;
+  margin-right: 5px;
+  opacity: 1;
+  }
+  .button-style{
+    float: right;
+    border-radius: 50% ;
+    border: #307FE2;
+    background-color: #E2EEFD;
+    color:#307FE2;
+  }
+  .text-box{
+    width: 89px;
+height: 17px;
+opacity: 1;
+font: normal normal 900 16px/32px Lato;
+letter-spacing: 0.72px;
+color: #6C6C6C;
+padding-left: 10px;
+  }

@@ -1,0 +1,269 @@
+.heading{
+width:100%;
+height: 55px;
+background: var(--unnamed-color-307fe2) 0% 0% no-repeat padding-box;
+background: #307FE2 0% 0% no-repeat padding-box;
+opacity: 1;
+display: flex;
+justify-content: space-between;
+}
+
+.RSlogotop{
+    padding-left: 13px;
+    padding-top: 18px;
+    height: 19px;
+}
+.notification-icon{
+    height: 20px;
+    padding-top: 18px;
+    margin-left:100px;
+}
+.logout{
+    width:21px;
+    margin-right:16px;
+}
+.intro{
+    height: 153px;
+    background: #EEEEEE 0% 0% no-repeat padding-box;
+    border-radius: 0px 0px 30px 30px;
+    opacity: 1;
+   
+}
+.div-intro{
+    display: flex;
+    justify-content: space-between;
+}
+.t{
+    line-height: 1;
+}
+.intro-one{
+    text-align: left;
+font: normal normal 900 24px/38px Lato;
+letter-spacing: 1.08px;
+color: #307FE2;
+opacity: 1;
+margin-top: 18px;
+margin-left: 14px;
+
+}
+.intro-two{
+    text-align: left;
+font: normal normal normal 16px/25px Lato;
+letter-spacing: 0.72px;
+color: #6C6C6C;
+opacity: 1;
+margin-left: 15px;
+}
+.user-img{
+    width: 74px;
+height: 74px;
+background:transparent url("../img/User-Image.png") 0% 0% no-repeat padding-box;
+opacity: 1;
+margin-top: 10px;
+margin-right: 15px;
+}
+.edit-icon{
+    margin-right: 15px;
+}
+.icon-last-one{
+    margin-left: 15px;
+}
+.icon-last{
+    margin-left: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.detail{
+    text-align: left;
+    font: normal normal normal 16px/25px Lato;
+    letter-spacing: 0.72px;
+    color: #6C6C6C;
+    opacity: 1;
+    height:19px;
+    padding-left: 7px;
+    margin-top: 4px;
+}
+.poster{
+margin-top: 21px;
+margin-left: 14px;
+margin-right: 16px;
+height: 103px;
+display: flex;
+justify-content: space-between;
+background: #F0F0F0 0% 0% no-repeat padding-box;
+opacity: 1;
+}
+.covidimage{
+    height: 66px;
+    margin-top: 18px;
+    margin-left: 8px;
+    opacity: 1;
+    float: left;
+}
+.text-m{
+    padding-top:25px;
+}
+.message{
+    height: 38px;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-900) 14px/21px var(--unnamed-font-family-lato);
+    width: 100%;
+    font: normal normal 900 14px/21px Lato;
+    letter-spacing: 0.63px;
+    opacity: 1;
+   
+}
+.new-message{
+    height: 17px;
+font: normal normal 900 14px/21px Lato;
+letter-spacing: 0.63px;
+color: #307FE2;
+}
+.new-div{
+margin-top: 18px;
+margin-left: 15px;
+margin-right: 15px;
+height: 150px;
+border: 1px solid var(--unnamed-color-307fe2);
+background: #F5F9FF 0% 0% no-repeat padding-box;
+box-shadow: 4px 3px 6px #307FE233;
+border: 1px solid #307FE2;
+border-radius: 10px;
+opacity: 1;
+display:flex;
+justify-content: space-between;
+}
+.start{
+    padding-left:4px; 
+    padding-top: 23px;
+    font: normal normal normal 15px/34px Lato;
+letter-spacing: 0.68px;
+color: #6C6C6C;
+opacity: 1;
+width:100%;
+
+}
+.start-one{
+    display: flex;
+    justify-content: space-between;
+}
+.first-img{
+    margin-left: 10px;
+    height:19px;
+    margin-top:19px;
+}
+.first-txt{
+    font: normal normal normal 16px/26px Lato;
+letter-spacing: 0.72px;
+color: #307FE2;
+opacity: 1;
+margin-left: 13px;
+height: 19px;
+margin-top: 15px;
+}
+.v{
+    float:left;
+    width:18px;
+}
+.sicklogo{
+    padding-left:14px;
+    height: 18px;
+    width:92px;
+    
+}
+.sunbedlogo{
+    padding-left:14px;
+    height: 18px;
+    width:120px;
+}
+.annuallogo{
+    padding-left:14px;
+    height: 18px;
+    width:102px;
+}
+.text-one{
+letter-spacing: NaNpx;
+color: #FF6F01;
+padding-right:25px;
+opacity: 1;
+
+}
+.setdiv{
+    margin-right: 21px;
+    
+}
+.setimg{
+    margin-top:28px;
+}
+.text-two{
+font: normal normal normal 20px/39px Lato;
+letter-spacing: 0.9px;
+color: #307FE2;
+opacity: 1;
+padding-left: 18px;
+}
+.div-st{
+    height: 150px;
+    border: 1px solid var(--unnamed-color-307fe2);
+    background: #F5F9FF 0% 0% no-repeat padding-box;
+    box-shadow: 4px 3px 6px #307FE233;
+    border: 1px solid #307FE2;
+    border-radius: 10px;
+    opacity: 1;
+    margin-left: 14px;
+    margin-top: 29px;
+    margin-right: 16px;
+}
+.first-divone{
+    display: flex;
+}
+.setimg-one{
+    width: 83px;
+height: 81px;
+opacity: 1;
+margin-left:85px;
+}
+.setdiv-one{
+    margin-top: 10px;
+    margin-right:42px;
+}
+.standup-text{
+    width:100px;
+}
+.text-three{
+    font: normal normal normal 20px/39px Lato;
+    letter-spacing: 0.9px;
+    color: #307FE2;
+    opacity: 1;
+    padding-left: 18px;
+    margin-left: 70px;
+    }
+.ft{
+    height: 69px;
+border: 1px solid var(--unnamed-color-307fe2);
+background: #F5F9FF 0% 0% no-repeat padding-box;
+border: 1px solid #307FE2;
+border-radius: 7px;
+opacity: 1;
+margin-top: 26px;
+margin-left: 16px;
+margin-right: 16px;
+display: flex;
+justify-content: space-between;
+}
+.ft-text{
+    margin-left: 6px;
+    font: normal normal normal 18px/36px Lato;
+    letter-spacing: 0.81px;
+    color: #307FE2;
+    opacity: 1;
+    padding-top: 18px;
+   
+}
+.setcalendericon{
+    height: 27px;
+border: 1px solid var(--unnamed-color-307fe2);
+border: 1px solid #307FE2;
+opacity: 1;
+margin-top: 21px;
+margin-right:17px;
+}

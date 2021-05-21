@@ -1,0 +1,19 @@
+.symbol{
+    
+    text-align: center;
+    margin-top:36px;
+   
+opacity: 1;
+    }
+    .icon{
+      float:left;
+      width:19px;
+      height:19px;
+      margin-top:3px;
+    }
+    .google-text{
+        color:#307FE2;
+        padding-left: 6px;
+        width: 58px;
+        height: 21px;
+    }

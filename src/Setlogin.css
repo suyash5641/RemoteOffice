@@ -1,0 +1,31 @@
+.form{
+    
+  margin-top:25px;
+   text-align: center;
+   color: #FFFFFF;
+opacity: 1;
+}
+.login{
+border: 2px solid var(--unnamed-color-307fe2);
+border: 2px solid #307FE2;
+border-radius: 12px;
+opacity: 1;
+color: var(--unnamed-color-6c6c6c);
+font: normal normal normal 17px/27px Lato;
+letter-spacing: 0.77px;
+opacity: 0.5;
+
+}
+
+#inputdefault {
+    margin-bottom:13px;
+    
+    
+  }
+  .box-m{
+    width: 112px;
+height: 43px;
+
+  }
+
+  

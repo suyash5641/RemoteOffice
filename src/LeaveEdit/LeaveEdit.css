@@ -1,0 +1,132 @@
+.content{
+    opacity: 1;
+    background: #F5F9FF;
+    height:100vmax;
+}
+.div-grp{
+margin-left: 10px;
+display: flex;
+}
+.box{
+    border: 1px solid var(--unnamed-color-307fe2);
+background: #FFFFFF 0% 0% no-repeat padding-box;
+box-shadow: 4px 3px 6px #307FE233;
+border: 1px solid #307FE2;
+border-radius: 11px;
+opacity: 1;
+height:260px;
+margin-top: 20px; 
+margin-left: 15px;
+margin-right: 15px;
+
+}
+.div-one{
+    height: 59px;
+background:#F5F9FF;
+opacity: 1;
+margin-top: 20px; 
+margin-left: 13px;
+margin-right: 13px;
+display: flex;
+    justify-content: space-between;
+}
+
+.first-div{
+    display: flex;
+    justify-content: space-between;
+}
+.sickimg{
+height: 43px;
+opacity: 1;
+margin-left: 10px;
+margin-top: 8px;
+}
+.info{
+    width: 33px;
+height: 30px;
+color: var(--unnamed-color-ff6f01);
+text-align: left;
+letter-spacing: NaNpx;
+color: #FF6F01;
+opacity: 1;
+margin-top: 20px;
+}
+.info-one{
+    text-align: left;
+font: normal normal 900 25px/32px Lato;
+letter-spacing: 1.13px;
+color: #FF6F01;
+}
+.div-one-text{
+    font: normal normal 900 16px/32px Lato;
+letter-spacing: 0.72px;
+color: #6C6C6C;
+width: 81px;
+height: 19px;
+padding-left: 14px;
+margin-top: 19px;
+}
+.div-two-text{
+    font: normal normal 900 16px/32px Lato;
+letter-spacing: 0.72px;
+color: #6C6C6C;
+width:100px;
+height: 19px;
+padding-left: 14px;
+margin-top: 19px;
+}
+.div-three-text{
+    font: normal normal 900 16px/32px Lato;
+letter-spacing: 0.72px;
+color: #6C6C6C;
+width:110px;
+height: 19px;
+padding-left: 14px;
+margin-top: 19px;
+}
+.st{
+    text-align: center;
+}
+.recent{
+    font: normal normal 900 14px/36px Lato;
+letter-spacing: 0.63px;
+color: #307FE2;
+opacity: 1;
+
+}
+.first{
+    height: 49px;
+border: 1px solid var(--unnamed-color-307fe2);
+background: #E2EEFD 0% 0% no-repeat padding-box;
+border: 1px solid #307FE2;
+border-radius: 13px 13px 0px 0px;
+opacity: 1;
+display: flex;
+justify-content: space-between;
+}
+.list{
+    text-align: left;
+font: normal normal normal 14px/28px Lato;
+letter-spacing: 0.63px;
+color: #307FE2;
+opacity: 1;
+padding-left: 5px;
+}
+.list-one{
+    padding-left: 2px;
+    font: normal normal 900 18px/36px Lato;
+letter-spacing: 0.81px;
+color: #307FE2;
+opacity: 1;
+}
+.new-icon{
+    float: right;
+}
+.second{
+height: 125px;
+background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+border: 1px solid var(--unnamed-color-307fe2);
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #307FE2;
+opacity: 1;
+}
