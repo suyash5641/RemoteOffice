@@ -12,6 +12,16 @@ import Button from '@material-ui/core/Button';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 function LeaveEdit()
 {
+    function Check()
+  {
+    
+    var x = document.getElementById("m");
+  if (x.style.display== "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  }
 
 return(
     <>
@@ -58,25 +68,37 @@ return(
            <div className="st" >
            <span className="recent">Recent leave history</span>
            </div>
-           <div className="leave-history">
+            <div className="leave-history">
                
-               <div className="first">
-                <div className>
-                    <img src={calendericon}/> 
+                <div className="first">
+                <div className="first-add">
+                    <div className="setflex">
+                    <img src={calendericon} className="first-add-img"/> 
                     <span className="list">05 May 2021</span> 
+                
                     <span className="list-one">To</span> 
-                    <img src={calendericon}/> 
-                    <span  className="list">08 May 2021</span> 
-
-                </div>
-                <Hide/>
-               </div>
-             <div className="second">
-                </div>
-
-           </div>
-
-
+                    <img src={calendericon} className="first-add-img"/> 
+                    <span  id="list-new" >08 May 2021</span> 
+                    </div>
+                
+                   
+                
+                   
+                 </div>
+                 <div>
+                 <i className="set" onClick={Check}>
+                     <EditIcon style={{color:"#307FE2",marginTop:"15px",width:"18px",marginLeft:"20px",
+                    height:"18px"}}/>
+                    </i>
+                 </div>
+                 </div> 
+                 <div className="reset">
+                  <Hide/>
+                 </div>
+                 
+                
+                <div className="second"> </div>
+            </div>
         </div>
 
         

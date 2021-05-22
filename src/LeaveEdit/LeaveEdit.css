@@ -104,6 +104,13 @@ opacity: 1;
 display: flex;
 justify-content: space-between;
 }
+.setflex{
+    display: flex;
+}
+.first-add-img{
+    margin-top: 11px;
+    margin-left: 6px;
+}
 .list{
     text-align: left;
 font: normal normal normal 14px/28px Lato;
@@ -111,6 +118,7 @@ letter-spacing: 0.63px;
 color: #307FE2;
 opacity: 1;
 padding-left: 5px;
+margin-top: 10px;
 }
 .list-one{
     padding-left: 2px;
@@ -118,6 +126,16 @@ padding-left: 5px;
 letter-spacing: 0.81px;
 color: #307FE2;
 opacity: 1;
+margin-top: 6px;
+}
+#list-new{
+    text-align: left;
+    font: normal normal normal 14px/28px Lato;
+    letter-spacing: 0.63px;
+    color: #307FE2;
+    opacity: 1;
+    padding-left: 5px;
+    margin-top: 10px;
 }
 .new-icon{
     float: right;

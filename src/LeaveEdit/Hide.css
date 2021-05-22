@@ -6,18 +6,20 @@
     float: right;
   
   }
-  
-  .m{
-    width:158px;
+  .reset{
+    position: absolute;
+    z-index: 1;
+    right:19px;
+  }
+  #m{
+    width:220px;
     height: 139px;
-    position:relative;
-    z-index:1;
   height: 139px;
   border: 1px solid var(--unnamed-color-307fe2);
   background: #E2EEFD 0% 0% no-repeat padding-box;
   border: 1px solid #307FE2;
   border-radius: 10px;
-  margin-top:10px;
+  margin-top:-40px;
   margin-right: 5px;
   opacity: 1;
   }
@@ -27,6 +29,8 @@
     border: #307FE2;
     background-color: #E2EEFD;
     color:#307FE2;
+    margin-top: 10px;
+    margin-right: 10px;
   }
   .text-box{
     width: 89px;

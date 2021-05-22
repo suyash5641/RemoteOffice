@@ -6,13 +6,25 @@ import DatePicker from "react-datepicker";
 import Button from '@material-ui/core/Button';
 import "react-datepicker/dist/react-datepicker.css";
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+
+
+const LEAVE_TYPES = [
+  'Casual',
+  'Sick',
+  'Others'
+]
 function LeaveForm()
 {
     const [Date1, setDate1] = useState(new Date()); 
     const [Date2, setDate2] = useState(new Date()); 
     const [r,setReason]=useState("");
     const[total,setTotal]=useState(0);
-    const[data,setData]=useState([])
     function calc()
     {
       const a=Date2.getTime();
@@ -52,10 +64,38 @@ function LeaveForm()
     })
     }
       
-    
+    /**
+     * ritik block starts
+     */
+
+    const [fromDate, setFromDate] = React.useState(new Date())
+    const [toDate, setToDate] = React.useState(new Date())
+    const [leaveType, setLeaveType] = React.useState(LEAVE_TYPES[0])
+    const [totalDays, setTotalDays] = React.useState(1)
+   // const [reason, setReason] = React.useState('')
+
+    React.useEffect(() => {
+      //calcutae total days
+      setTotalDays(2)
+    }, [fromDate, toDate])
+
+    const Submit = () => {
+      const payload = {
+        fromDate:convert(Date1),
+        toDate:convert(Date2),
+        leaveType:"others",
+        reason: r,
+      }
+      console.log(payload);
+      fetch('http://localhost:8080/leaves', payload).then(response=>{
+        if(response){
+          alert("created ");
+        }
+      })
+    }
+
    
 return (
-    <>
     <div className="main-body">
          <div className="header-form">
          <div className="div-grp">
@@ -68,55 +108,58 @@ return (
             </div>
          </div>
          <div className="new-form">
-         <form className="fm" >
-         <div className="start-one">
-            <div className="first-divone">
-            <label className="label-text">From Date:</label>
-            <DatePicker selected={Date1} 
-           onChange={(value)=>{setDate1(value)}}
-            dateFormat='dd/MM/yyyy'
-            minDate={new Date()}
-            className="date"/>
-            </div>
-            </div>
-            <br></br>
-            <label className="label-text-one">To Date: </label>
-            <DatePicker selected={Date2} 
-           onChange={(value)=>{setDate2(value)}}
-           dateFormat='dd/MM/yyyy'
-            minDate={Date1}
-            className="date-one"/>
-           
-            <br></br>
-            <label className="label-text" >Leave type:</label>
-            <select id="" name="" className="select-form">
-            <option value="" disabled selected>Select</option>
-             <option value="Sick leave">Sick leave</option>
-             <option value="Casual leave">Casual leave</option>
-             <option value="others">others</option>
-            </select>
-            <br></br>
-            <label className="label-text">Total Days:</label>
-            <input type="numeric" className="day-calc" 
-            onSelect={calc}
-            value={total}></input>
+          <form className="fm" >
+          <div className="start-one">
             
-            <br></br> 
-            <div className="data">
-            <label className="label-text-new">Reason:</label>
-            <textarea type="text" className="reason" name="resonn" 
-            onChange={(e)=>{setReason(e.target.value)}}
-            ></textarea>
-            </div>
-            <Button variant='contained'  fullWidth='true'  style={{textTransform: 'none',color:"white", backgroundColor: '#307FE2',width:"112px",
-          height:"43px",marginTop:"30px",marginLeft:"120px" } }
-          onClick={Data} > 
-          Submit
-        </Button>
-        </form>
+              <div className="first-divone">
+              <label className="label-text">From Date:</label>
+              <DatePicker selected={Date1} 
+            onChange={(value)=>{setDate1(value)}}
+            dateFormat='dd/MM/yyyy'
+              minDate={new Date()}
+              className="date"
+              />
+              </div>
+          </div>
+          <div>
+              <label className="label-text-one">To Date: </label>
+              <DatePicker selected={Date2} 
+            onChange={(value)=>{setDate2(value)}}
+            dateFormat='dd/MM/yyyy'
+              minDate={Date1}
+              className="date-one"/>
+          </div> 
+          <div>
+              <label className="label-text" >Leave type:</label>
+              <select id="" name="" className="select-form">
+              <option value="" disabled selected>Select</option>
+              <option value="Sick leave">Sick leave</option>
+              <option value="Casual leave">Casual leave</option>
+              <option value="others">others</option>
+              </select>
+          </div> 
+          <div>
+              <label className="label-text">Total Days:</label>
+              <input type="numeric" className="day-calc" 
+              onSelect={calc}
+              value={total}></input>
+          </div>   
+          <div>
+              <div className="data">
+              <label className="label-text-new">Reason:</label>
+              <textarea type="text" className="reason" name="resonn" 
+              onChange={(e)=>{setReason(e.target.value)}}
+              ></textarea>
+              </div>
+          </div>
+              <Button variant='contained'  fullWidth='true'  style={{textTransform: 'none',color:"white", backgroundColor: '#307FE2',width:"112px",
+            height:"43px",marginTop:"30px",marginLeft:"120px" } }
+            onClick={Submit} > 
+            Submit
+          </Button>
+          </form>
          </div>
     </div>
-    </>
 )
 }
 export default LeaveForm;
