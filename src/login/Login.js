@@ -7,23 +7,26 @@ import google from './google-symbol.svg';
 import LoginHooks from './LoginHooks';
 function Login() {
   return (
-    <div >
-      <header> 
-      <img src={Path159} className="image" /> 
+    <div  className="setmain">
+      <div className="setbox"> 
+      <header className="upper-section"> 
+        <img src={Path159} className="image" /> 
         <img src={Group306} className="image-two" /> 
-        </header>
+      </header>
         <Setlogin/> 
         <div className="text-change" >
           <span className="text-change-first">Or</span>
           <br></br>
           <span>Sign in with</span> 
-       </div> 
-        <div >
+        </div> 
+         <div className="google-auth">
           <LoginHooks />
-        </div>
+         </div>
+      </div>    
         <div>
           <Setfooter/>
         </div>
+       
    </div>
   );
 }

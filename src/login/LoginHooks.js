@@ -16,9 +16,9 @@ const clientId =
 function LoginHooks() {
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
-    alert(
-      `Logged in successfully welcome ${res.profileObj.name}.`
-    );
+   // alert(
+   //   `Logged in successfully welcome ${res.profileObj.name}.`
+   // );
     refreshTokenSetup(res);
   };
 

@@ -80,9 +80,6 @@ return(
                     <img src={calendericon} className="first-add-img"/> 
                     <span  id="list-new" >08 May 2021</span> 
                     </div>
-                
-                   
-                
                    
                  </div>
                  <div>
