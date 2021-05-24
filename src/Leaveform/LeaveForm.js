@@ -5,8 +5,12 @@ import notificationicon from '../img/notification icon.svg';
 import DatePicker from "react-datepicker";
 import Button from '@material-ui/core/Button';
 import "react-datepicker/dist/react-datepicker.css";
+import calendericon from '../img/calendericon.svg';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
+import Icon from "@material-ui/core/Icon";
 import DateFnsUtils from '@date-io/date-fns';
+import { useHistory } from 'react-router';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -21,6 +25,7 @@ const LEAVE_TYPES = [
 ]
 function LeaveForm()
 {
+  let history=useHistory();
     const [Date1, setDate1] = useState(new Date()); 
     const [Date2, setDate2] = useState(new Date()); 
     const [r,setReason]=useState("");
@@ -80,6 +85,7 @@ function LeaveForm()
     }, [fromDate, toDate])
 
     const Submit = () => {
+      history.push('/Complete');
       const payload = {
         fromDate:convert(Date1),
         toDate:convert(Date2),
@@ -99,7 +105,8 @@ return (
     <div className="main-body">
          <div className="header-form">
          <div className="div-grp">
-         <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"20px"}}/>
+         <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"16px"}}
+           onClick={()=>{history.goBack()}}/>
              <span className="txt">Leave Application</span>
           </div>
           <div className="div-grp-two">
@@ -109,7 +116,7 @@ return (
          </div>
          <div className="new-form">
           <form className="fm" >
-          <div className="start-one">
+          <div className="start-new">
             
               <div className="first-divone">
               <label className="label-text">From Date:</label>
@@ -117,17 +124,20 @@ return (
             onChange={(value)=>{setDate1(value)}}
             dateFormat='dd/MM/yyyy'
               minDate={new Date()}
-              className="date"
-              />
-              </div>
+             className="date"
+              ></DatePicker> 
+              
+              </div> 
+            
           </div>
-          <div>
+          <div className="start-two">
               <label className="label-text-one">To Date: </label>
               <DatePicker selected={Date2} 
             onChange={(value)=>{setDate2(value)}}
             dateFormat='dd/MM/yyyy'
               minDate={Date1}
               className="date-one"/>
+              
           </div> 
           <div>
               <label className="label-text" >Leave type:</label>
@@ -144,13 +154,14 @@ return (
               onSelect={calc}
               value={total}></input>
           </div>   
-          <div>
-              <div className="data">
+          <div >
+              <div className="label-last">
               <label className="label-text-new">Reason:</label>
               <textarea type="text" className="reason" name="resonn" 
               onChange={(e)=>{setReason(e.target.value)}}
               ></textarea>
               </div>
+          
           </div>
               <Button variant='contained'  fullWidth='true'  style={{textTransform: 'none',color:"white", backgroundColor: '#307FE2',width:"112px",
             height:"43px",marginTop:"30px",marginLeft:"120px" } }

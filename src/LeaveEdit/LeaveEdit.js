@@ -10,8 +10,13 @@ import Hide from './Hide';
 import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/Button';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
+import { useHistory } from "react-router-dom";
 function LeaveEdit()
 {
+  let history = useHistory();
+  function handleClick() {
+    history.push("/LeaveForm");
+  }
     function Check()
   {
     
@@ -28,7 +33,8 @@ return(
     <div className="content">
         <div className="header-form"> 
            <div className="div-grp">
-           <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"20px"}}/>
+           <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"16px"}}
+            onClick={()=>{history.goBack()}}/>
            <span className="txt">Leave Application</span>
            </div>
            <div className="div-grp-two">
@@ -60,8 +66,10 @@ return(
             </div>
             <div className="st" >
             <Button variant='contained'  fullWidth='true'  style={{textTransform: 'none',color:"white", backgroundColor: '#307FE2',width:"180px",
-            height:"50px",marginTop:"40px",marginLeft:"10px" } } > 
+            height:"50px",marginTop:"40px",marginLeft:"10px" } } 
+            onClick={handleClick}> 
             Apply Leave
+            
            </Button> 
            </div>
            <br></br>

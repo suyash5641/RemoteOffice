@@ -23,11 +23,11 @@
 }
 .image-two
 {
-  top:15px;
-  left:15px;
+  margin-top:15px;
+  margin-left: -161px;
+  left:50%;
   z-index:1;
   position: absolute;
-  width:80%;
 }
 .text-change{
   top:592px;

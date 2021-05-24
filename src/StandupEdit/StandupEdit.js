@@ -4,14 +4,17 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import Button from '@material-ui/core/Button';
 import historyicon from '../img/History icon.svg';
 import calendericon from '../img/calendericon.svg';
+import { useHistory } from 'react-router';
 function StandupEdit()
 {
+    let history=useHistory();
 return(
       <>
         <div className="main-body">
          <div className="header-form">
          <div className="div-grp">
-             <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"20px"}}/>
+             <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"20px"}}
+              onClick={()=>{history.goBack()}}/>
              <span className="txt">Standup</span>
              </div>
              <div className="div-grp-two">

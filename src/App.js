@@ -7,6 +7,9 @@ import LeaveForm from './Leaveform/LeaveForm';
 import LeaveEdit from './LeaveEdit/LeaveEdit';
 import Standup from './Standup/Standup';
 import StandupEdit from './StandupEdit/StandupEdit';
+import Standuphistory from './Standuphistory/Standuphistory';
+import Holiday from './Holiday/Holiday';
+import Complete from './Complete/Complete';
 import Setfooter from './Setfooter';
 import google from './google-symbol.svg';
 import {
@@ -24,7 +27,11 @@ function App() {
       <Link to="/LeaveForm"></Link>
       <Link t0="/LeaveEdit"></Link>
       <Link to="/Standup"></Link> 
-      <Link to="/StandupEdit"></Link>
+      <Link to="/StandupEdit"></Link> 
+      <Link to="/Standuphistory"></Link>
+      <Link to="/Holiday"></Link>
+      <Link to="/Complete"></Link>
+
       <Switch>
         <Route path="/HomeScreen">
           <HomeScreen />
@@ -40,6 +47,15 @@ function App() {
         </Route>
         <Route path="/StandupEdit">
           <StandupEdit/>
+        </Route>
+        <Route path="/Standuphistory">
+          <Standuphistory/>
+        </Route>
+        <Route path="/Holiday">
+          <Holiday/>
+        </Route>
+        <Route path="/Complete">
+          <Complete/>
         </Route>
         <Route path="/">
           <Login/>

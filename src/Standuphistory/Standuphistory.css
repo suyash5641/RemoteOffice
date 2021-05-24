@@ -1,0 +1,93 @@
+.container{
+    height: 100vh;
+    background: #F5F9FF;
+}
+.txt-standup{
+    text-align: left;
+font: normal normal 900 16px/26px Lato;
+letter-spacing: 0.72px;
+color: #FFFFFF;
+opacity: 1;
+}
+.text-grpfirst{
+    display: flex;
+    justify-content: space-between;
+}
+.textsecond{
+    text-align: left;
+font: normal normal 900 18px/36px Lato;
+letter-spacing: 0.81px;
+color: #307FE2;
+opacity: 1;
+margin-top: 13px;
+margin-left: 14px;
+  
+}
+.divimg{
+    margin-right: 18px;
+    margin-top: 13px;
+}
+.details{
+    background: #EDF2F9 0% 0% no-repeat padding-box;
+    border: 1px solid var(--unnamed-color-307fe2);
+box-shadow: 4px 3px 6px #307FE233;
+border: 1px solid #307FE2;
+opacity: 1;
+height:135px;
+margin-left: 15px;
+margin-right: 15px;
+overflow-x: auto;
+overflow-y:hidden;
+margin-top: 10px;
+}
+.divimgone{
+    margin-left:10px;
+    margin-top: 10px;
+    width: 17px; 
+    height: 19px;
+}
+.divtextone{
+    letter-spacing: var(--unnamed-character-spacing-0-72);
+color: var(--unnamed-color-307fe2);
+text-align: left;
+font: normal normal normal 16px/26px Lato;
+letter-spacing: 0.72px;
+color: #307FE2;
+opacity: 1;
+margin-top: 7px;
+margin-left: 10px;
+}
+.Editicon2{
+    width: 19px;
+height: 19px;
+margin-top: 13px;
+margin-right: 17px;
+opacity: 1;
+}
+.prev-standup{
+    padding: bottom;
+    display: flex;
+    justify-content: space-between;
+}
+.standup-content{
+    padding-top:0px;
+    padding-left: 15px;
+    font: normal normal normal 16px/26px Lato;
+letter-spacing: 0.72px;
+color:#6C6C6C;
+opacity: 1;
+width: 100%;
+overflow-x: auto;
+overflow-y: auto;
+letter-spacing: 0.72px;
+
+}
+.show{
+    color: var(--unnamed-color-307fe2);
+text-align: left;
+font: normal normal normal 16px/26px Lato;
+letter-spacing: 0.72px;
+color: #307FE2;
+opacity: 1;
+margin-top: 78px;
+}

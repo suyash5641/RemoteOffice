@@ -13,8 +13,13 @@ import calendericon from '../img/calendericon.svg';
 import editicon from '../img/edit icon.svg';
 import userimg from '../img/UserImage.svg';
 import standup from '../img/Standup Illustrator.svg';
+import { useHistory } from "react-router-dom";
 function HomeScreen()
 {
+    let history = useHistory();
+    function handleClick() {
+      history.push("/LeaveEdit");
+    }
     return(
         <>
         <div>
@@ -85,20 +90,39 @@ function HomeScreen()
             </div>
             <div className="setdiv">
             <img src={newimg} className="setimg" ></img>
-            <span className="text-two">Leaves</span>
+            <span className="text-two"  onClick={handleClick}>Leaves</span>
             </div>
 
         </div> 
         <div className="div-st">
             <div className="start-one">
+        
             <div className="first-divone">
              <img className="first-img" src={calendericon}/>
-             <span className="first-txt">05/May/2021</span>
+             <span className="first-txt">05/May/2021</span> 
+             <div>
+             <div className="new-text" >
+                          <span>What I did yesterday?</span>
+                          <br></br>
+                          <span className="text-divone">Made some changes</span>
+                          <br></br> 
+                        
             </div>
+            </div>
+             
+            
+
+            
+          
+            </div> 
+           
+           
             <div className="setdiv-one">
             <img src={standup} className="setimg-one" ></img>
             <div>
-            <span className="text-three">standup</span>
+            
+            <span className="text-three" 
+            onClick={()=>{ history.push("/Standup")}}>standup</span>
             </div>
             </div>
 
@@ -109,7 +133,8 @@ function HomeScreen()
         </div>
         <div className="ft">
             <span className="ft-text">Holidays Calender</span>
-            <img src={calendericon} className="setcalendericon" ></img>
+            <img src={calendericon} className="setcalendericon"
+            onClick={()=>( history.push("/Holiday"))} ></img>
            
         </div>
         </div>

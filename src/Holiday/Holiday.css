@@ -1,0 +1,50 @@
+.holiday-div{
+margin-top: 30px;
+margin-left: 14px;
+margin-right: 14px;
+}
+.divimage{
+
+width: 100%;
+opacity: 1;
+}
+.pos{
+    margin-left: 14px;
+    margin-right: 12px;
+}
+table {
+    table-layout: fixed ;
+    width: 100% ;
+    
+  }
+ th{
+     width: 50%;
+     background: #307FE2 0% 0% no-repeat padding-box;
+opacity: 1;
+text-align: center;
+letter-spacing: var(--unnamed-character-spacing-0-81);
+color: var(--unnamed-color-ffffff);
+text-align:center;
+font: normal normal normal 18px/36px Lato;
+letter-spacing: 0.81px;
+color: #FFFFFF;
+opacity: 1;
+ }
+ td{
+     width: 50%;
+     color: var(--unnamed-color-6c6c6c);
+text-align: left;
+font: normal normal normal 14px/36px Lato;
+letter-spacing: 0.63px;
+color: #6C6C6C;
+margin-left: 17px;
+margin-top: 21px;
+opacity: 1;
+padding-left: 20px;
+border-bottom: 1px;
+border-bottom-style: solid;
+ }
+.table-h{
+    background: #F5F9FF 0% 0% no-repeat padding-box;
+    opacity: 1;
+}

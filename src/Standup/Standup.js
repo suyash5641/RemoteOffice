@@ -5,14 +5,21 @@ import './Standup.css';
 import Button from '@material-ui/core/Button';
 import historyicon from '../img/History icon.svg';
 import calendericon from '../img/calendericon.svg';
+import { useHistory } from "react-router-dom";
 function Standup()
 {
+
+    let history = useHistory();
+    function handleClick() {
+      history.push("/Standuphistory");
+    }
 return(
       <>
         <div className="standup-main-body">
          <div className="header-form">
             <div className="div-grp">
-             <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"20px"}}/>
+             <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"20px"}}
+              onClick={()=>{history.goBack()}}/>
              <span className="txt">Standup</span>
              </div>
              <div className="div-grp-two">
@@ -41,7 +48,7 @@ return(
         <div className="standup-footer">
             <div className="div-last" >
                <img src={historyicon} className="footer-img"/>
-               <span className="last-txt">Previous Standup</span>
+               <span className="last-txt"    onClick={handleClick}>Previous Standup</span>
             </div> 
             <img src={calendericon} className="set-footer-img"/>
         </div> 
