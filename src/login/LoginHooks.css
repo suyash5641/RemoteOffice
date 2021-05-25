@@ -12,8 +12,12 @@ opacity: 1;
       margin-top:3px;
     }
     .google-text{
-        color:#307FE2;
+    
         padding-left: 6px;
         width: 58px;
         height: 21px;
+font: normal normal 900 17px/27px Lato;
+letter-spacing: 0.77px;
+color: #307FE2;
+opacity: 1;
     }

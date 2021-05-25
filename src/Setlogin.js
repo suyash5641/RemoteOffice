@@ -18,7 +18,7 @@ function Setlogin() {
         <input type="text" id="inputdefault" className="login" placeholder="Password"></input>
         <br></br>
           <Button variant='contained'  fullWidth='true' style={{textTransform: 'none',color:"white", backgroundColor: '#307FE2',width:"112px",
-          height:"43px"} }
+          height:"43px",marginTop:"12px"} }
           onClick={handleClick} > 
           Login
         </Button>
