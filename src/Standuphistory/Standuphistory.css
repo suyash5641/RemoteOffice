@@ -39,6 +39,7 @@ margin-right: 15px;
 overflow-x: auto;
 overflow-y:hidden;
 margin-top: 10px;
+border-radius: 10px;
 }
 .divimgone{
     margin-left:10px;
@@ -90,4 +91,5 @@ letter-spacing: 0.72px;
 color: #307FE2;
 opacity: 1;
 margin-top: 78px;
+margin-right: 11px;
 }

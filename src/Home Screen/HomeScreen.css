@@ -92,6 +92,7 @@ display: flex;
 justify-content: space-between;
 background: #F0F0F0 0% 0% no-repeat padding-box;
 opacity: 1;
+border-radius: 8px;
 }
 .covidimage{
     height: 66px;
@@ -102,6 +103,7 @@ opacity: 1;
 }
 .text-m{
     padding-top:25px;
+    margin-right: 6px;
 }
 .message{
     height: 38px;
@@ -125,6 +127,16 @@ opacity: 1;
 }
 .text-divone{
 
+}
+.txt-div{
+    font: normal normal 900 19px/27px Lato;
+letter-spacing: 0.94px;
+color: #FF6F01;
+}
+.txt-divone{
+    font: normal normal 900 19px/27px Lato;
+letter-spacing: 0.94px;
+color: #FF6F01;
 }
 .new-message{
     height: 17px;
@@ -160,6 +172,11 @@ width:100%;
     display: flex;
     justify-content: space-between;
 }
+.start-new1{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+}
 .first-img{
     margin-left: 10px;
     height:19px;
@@ -178,6 +195,25 @@ margin-top: 15px;
     float:left;
     width:18px;
 }
+.img-sneeze{
+    width: 20px;
+    height: 22px;
+    margin-top: 6px;
+    padding-left: 5px;
+}
+.img-sunbed{
+    width: 19px;
+    height: 20px;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+.img-annual{
+    width: 21px;
+    height: 21px;
+    margin-top: 8px;
+    padding-right: 11px;
+    margin-left: 5px;
+}
 .sicklogo{
     padding-left:14px;
     height: 18px;
@@ -190,7 +226,7 @@ margin-top: 15px;
     width:120px;
 }
 .annuallogo{
-    padding-left:14px;
+    padding-left:0px;
     height: 18px;
     width:102px;
 }
@@ -199,8 +235,17 @@ letter-spacing: NaNpx;
 color: #FF6F01;
 padding-right:25px;
 opacity: 1;
-
+font: normal normal 900 13px/27px Lato;
 }
+.text-one-one{
+    letter-spacing: NaNpx;
+    color: #FF6F01;
+    padding-left:0px;
+    opacity: 1;
+    font: normal normal 900 13px/27px Lato;
+    margin-right: 8px;
+    
+    }
 .setdiv{
     margin-right: 21px;
     

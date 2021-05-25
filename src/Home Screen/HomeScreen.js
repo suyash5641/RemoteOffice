@@ -68,24 +68,27 @@ function HomeScreen()
             <div className="start">
             <div className="start-one">
             <div className="first-divone">
-            <img src={sneeze}  ></img>
+            <img src={sneeze} className="img-sneeze"  ></img>
             <span className="sicklogo" >Sick Leave</span>
             </div>
-            <span className="text-one" >3/7</span>
+            <span className="text-one" >
+            <span className="txt-div">3/</span>7</span>
             </div>
-            <div className="start-one">
+            <div className="start-new1">
             <div className="first-divone">
-            <img src={sunbed}  ></img>
+            <img src={sunbed} className="img-sunbed" ></img>
             <span className="sunbedlogo" >Casual Leave</span>
             </div>
-            <span className="text-one" >3/7</span>
+            <span className="text-one" >
+                <span className="txt-div">6/</span>7</span>
             </div>
-            <div className="start-one">
+            <div className="start-new1">
             <div className="first-divone">
-            <img src={annual}  ></img>
+            <img src={annual} className="img-annual"  ></img>
             <span className="annuallogo" >Annual leave </span>
             </div>
-            <span className="text-one" >3/7</span>
+            <span className="text-one-one" >
+            <span className="txt-divone">13/</span>21</span>
             </div>
             </div>
             <div className="setdiv">
