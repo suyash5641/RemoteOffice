@@ -14,8 +14,12 @@ import editicon from '../img/edit icon.svg';
 import userimg from '../img/UserImage.svg';
 import standup from '../img/Standup Illustrator.svg';
 import { useHistory } from "react-router-dom";
+import { useState } from 'react';
 function HomeScreen()
 {
+    const[isOpen,setIsopen]=useState("true");
+    const[phno,setNumber]=useState("88888888");
+    const[designation,setDesign]=useState("Developer");
     let history = useHistory();
     function handleClick() {
       history.push("/LeaveEdit");
@@ -35,13 +39,15 @@ function HomeScreen()
                <div className="t">
                <span className="intro-one">Hi, Suyash
                </span><br></br>
-               <span className="intro-two">Developer</span>
+               {isOpen && <span className="intro-two">{designation}</span>}
+               {!isOpen && <input onChange={(e)=>setDesign(e.target.value)}></input>}
                </div>
                 <div className="user-img" ></div>
                </div> 
                <div className="icon-last-one">
                 <img src={callicon}/>
-                <span className="detail" >8888888888</span>
+               {isOpen && <span className="detail" >{phno}</span>} 
+               {!isOpen && <input onChange={(e)=>setNumber(e.target.value)}></input>}
                </div>
                <div className="icon-last">
             
@@ -49,7 +55,7 @@ function HomeScreen()
                 <img src={mailicon}/>
                 <span className="detail" >suyash.jai@remotestate.com</span>
                 </div>
-                <img src={editicon} className="edit-icon"/>
+                <img src={editicon} onClick={()=>{setIsopen(!isOpen)}} className="edit-icon"/>
                  </div>
 
            </div>

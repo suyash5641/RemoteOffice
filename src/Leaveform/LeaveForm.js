@@ -9,28 +9,44 @@ import calendericon from '../img/calendericon.svg';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import Icon from "@material-ui/core/Icon";
-import DateFnsUtils from '@date-io/date-fns';
+import DateFnsUtils from '@date-io/date-fns'; 
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import axios from 'axios';
+import ButtonComponent from '../sdk/ButtonComponent';
 import { useHistory } from 'react-router';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+const useStyles = makeStyles(theme=>({
+  formControl:{
+     minWidth:100
+  },
+  root: {
+    backgroundColor:"#E2EEFD",
+    //color:"#6C6C6C",
+    fontFamily:"Lato",
+    letterSpacing:"0.72px",
+    fontSize:"14px",
+    textAlign:"left",
+    paddingLeft:"5px",
+    
+  },
+}));
 
 
-const LEAVE_TYPES = [
-  'Casual',
-  'Sick',
-  'Others'
-]
 function LeaveForm()
 {
   let history=useHistory();
-    const [Date1, setDate1] = useState(new Date()); 
-    const [Date2, setDate2] = useState(new Date()); 
-    const [r,setReason]=useState("");
-    const[total,setTotal]=useState(0);
-    function calc()
+    
+   //  const[total,setTotal]=useState(0);
+    const classes = useStyles();
+  /*  function calc()
     {
       const a=Date2.getTime();
       const b=Date1.getTime();
@@ -40,7 +56,7 @@ function LeaveForm()
         setTotal(c+1);
       else if(c===0)
         setTotal(c+1);
-    }
+    }*/
     function convert(str) {
       
         const date = new Date(str),
@@ -49,7 +65,7 @@ function LeaveForm()
       return [day,mnth,date.getFullYear()].join("/");
     }
  
-    function Data()
+   /* function Data()
     {
      // console.log(convert(Date1));
       //console.log(convert(Date2));
@@ -67,39 +83,61 @@ function LeaveForm()
         alert("created ");
       }
     })
-    }
+    }*/
       
     /**
      * ritik block starts
      */
+     const [StartDate, setStartDate] = useState(new Date()); 
+     const [EndDate, setEndDate] = useState(new Date()); 
+     const [reason,setReason]=useState(""); 
+     const [leaveType,setLeaveType]=useState("");
+     const [VALUE,setValue]=useState("Select"); 
+    const [totalDays, setTotalDays] = React.useState(1);
 
-    const [fromDate, setFromDate] = React.useState(new Date())
-    const [toDate, setToDate] = React.useState(new Date())
-    const [leaveType, setLeaveType] = React.useState(LEAVE_TYPES[0])
-    const [totalDays, setTotalDays] = React.useState(1)
-   // const [reason, setReason] = React.useState('')
-
-    React.useEffect(() => {
+   React.useEffect(() => {
       //calcutae total days
-      setTotalDays(2)
-    }, [fromDate, toDate])
-
+      setTotalDays(1+(Math.floor((EndDate.getTime()-StartDate.getTime())/86400000)));
+    //  console.log(totalDays);
+    }, [StartDate,EndDate])
+   
+    const[a,setVal]=useState("true");
+    const[start,setStart]=useState("Select");
+    function handle()
+    {
+     setVal(!a);
+     if(a)
+     setStart("Select");
+    }
+    function handleChange(id)
+    {
+      //console.log(id);
+      setStart(id);
+     // console.log(start,"hello");
+      setLeaveType(id);
+    }
     const Submit = () => {
       history.push('/Complete');
-      const payload = {
-        fromDate:convert(Date1),
-        toDate:convert(Date2),
-        leaveType:"others",
-        reason: r,
+ 
+      const data = {
+        leaveFrom:StartDate.toISOString(),
+        leaveTo:EndDate.toISOString(),
+        leaveType:leaveType,
+        reason: reason,
       }
-      console.log(payload);
-      fetch('http://localhost:8080/leaves', payload).then(response=>{
-        if(response){
-          alert("created ");
+      console.log(data);
+      const access_token=localStorage.getItem('x-api-key');
+      fetch('http://localhost:8080/api/leave',{
+        method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+         // "Content-type":"application/json;charset=UTF-8",
+          'x-api-key':`${access_token}` 
         }
       })
     }
-
+   
+    
    
 return (
     <div className="main-body">
@@ -120,8 +158,8 @@ return (
             
               <div className="first-divone">
               <label className="label-text">From Date:</label>
-              <DatePicker selected={Date1} 
-            onChange={(value)=>{setDate1(value)}}
+              <DatePicker selected={StartDate} 
+            onChange={(value)=>{setStartDate(value)}}
             dateFormat='dd/MM/yyyy'
               minDate={new Date()}
              className="date"
@@ -132,27 +170,40 @@ return (
           </div>
           <div className="start-two">
               <label className="label-text-one">To Date: </label>
-              <DatePicker selected={Date2} 
-            onChange={(value)=>{setDate2(value)}}
+              <DatePicker selected={EndDate} 
+            onChange={(value)=>{setEndDate(value)}}
             dateFormat='dd/MM/yyyy'
-              minDate={Date1}
+              minDate={StartDate}
               className="date-one"/>
               
           </div> 
-          <div>
-              <label className="label-text" >Leave type:</label>
-              <select id="" name="" className="select-form">
-              <option value="" disabled selected>Select</option>
-              <option value="Sick leave">Sick leave</option>
-              <option value="Casual leave">Casual leave</option>
-              <option value="others">others</option>
-              </select>
+          <div className="style-div" >
+        
+              <label className="labletext" >Leave type:</label>
+                <span className="select-form">
+                 <span  onClick={handle} >{start}</span>
+                    {!a && <div  onClick={handle}>
+                   <div>
+                    <span className="leave" onClick={()=>handleChange("Sick leave")}>Sick leave</span>
+                   </div>
+                   <div>
+                   <span className="leave" onClick={()=>handleChange("casual leave")}>Casual leave</span>
+                   </div>
+                   <div>
+                    <span className="leave" onClick={()=>handleChange("others")}>others</span>
+                    </div>
+                    </div>}
+                </span>
+              
+           
+              
+              
           </div> 
           <div>
               <label className="label-text">Total Days:</label>
               <input type="numeric" className="day-calc" 
-              onSelect={calc}
-              value={total}></input>
+              
+              value={totalDays}></input>
           </div>   
           <div >
               <div className="label-last">
@@ -163,11 +214,9 @@ return (
               </div>
           
           </div>
-              <Button variant='contained'  fullWidth='true'  style={{textTransform: 'none',color:"white", backgroundColor: '#307FE2',width:"112px",
-            height:"43px",marginTop:"30px",marginLeft:"120px" } }
-            onClick={Submit} > 
-            Submit
-          </Button>
+              <div className="submit-bttn">
+              <ButtonComponent  onClick={Submit} >Submit</ButtonComponent>
+              </div>
           </form>
          </div>
     </div>

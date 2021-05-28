@@ -18,7 +18,7 @@ return(
         <div className="standup-main-body">
          <div className="header-form">
             <div className="div-grp">
-             <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"20px"}}
+             <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"16px"}}
               onClick={()=>{history.goBack()}}/>
              <span className="txt">Standup</span>
              </div>

@@ -94,20 +94,61 @@ height: 40px;
 margin-top:5px;
 padding-left: 5px;
 }
-.select-form{
-    border: 1px solid var(--unnamed-color-307fe2);
-background: #E2EEFD 0% 0% no-repeat padding-box;
+.MenuItem{
+    background: #E2EEFD 0% 0% no-repeat padding-box;
 border: 1px solid #307FE2;
 border-radius: 8px;
 opacity: 1;
 font: normal normal normal 14px/28px Lato;
 letter-spacing: 0.63px;
 color: #6C6C6C;
-height:40px;
-margin-left: 19px;
-width: 190px;
-margin-top: 19px;
 }
+.labletext{
+    font: normal normal 900 18px/36px Lato;
+    letter-spacing: 0.81px;
+    color: #307FE2;
+    opacity: 1;
+    margin-left: -190px;
+    margin-top: 7px;
+}
+
+.style-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 9px;
+}
+.select-form{
+    display: flex;
+    flex-direction: column;
+    font: normal normal normal 14px/28px Lato;
+    position: absolute;
+    border: 1px solid #307FE2;
+    background: #E2EEFD 0% 0% no-repeat padding-box;
+    border: 1px solid #307FE2;
+    border-radius: 8px;
+    opacity: 1;
+    padding-left: 10px;
+    padding-top: 11px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    border-radius: 8px;
+    opacity: 1;
+    letter-spacing: 0.63px;
+    margin-left: 133px;
+    width: 167px;
+    margin-top: 9px;
+    text-align: left;
+  
+  }
+  .leave{
+   border-top:1px solid #307FE2;
+   opacity: 1; 
+   padding-top: 15px;
+   display: flex;
+   flex-direction: column;
+   
+   
+  }
 .day-calc{
 height: 40px;
 border: 1px solid var(--unnamed-color-307fe2);
@@ -131,6 +172,7 @@ opacity: 1;
 margin-left: 15px;
 margin-top: 30px;
 }
+
 .reason{
     height: 169px;
 background: #E2EEFD 0% 0% no-repeat padding-box;
@@ -140,4 +182,8 @@ opacity: 1;
 margin-top: 30px;
 margin-left: 50px;
 width: 190px;
+}
+.submit-bttn{
+    margin-top: 20px;
+    margin-left: 24px
 }
