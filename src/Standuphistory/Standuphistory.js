@@ -103,12 +103,13 @@ function Standuphistory()
                  </div> 
                  <div className="prev-standup">
                       <div className="standup-content">
-                          <span>What I Did Yesterday</span>
+                          <span className="mark"></span><span>What I Did Yesterday?</span>
                           <br></br>
-                          <span>{standUp[k].data.split(",")[0]}</span>
+                          <span className="circle"></span> <span className="d">{standUp[k].data.split(",")[0]}</span>
                           <br></br>
-                          <span>What Will I Do Today</span>
-                          <span>{standUp[k].data.split(",")[1]}</span>
+                           <span className="mark"></span><span>What Will I Do Today?</span>
+                          <br></br>
+                          <span className="circle"></span><span className="d">{standUp[k].data.split(",")[1]}</span>
                           
                       </div> 
                       <div id={k+5} className="show" onClick={()=>Open(k)}>

@@ -83,6 +83,22 @@ overflow-y: auto;
 letter-spacing: 0.72px;
 
 }
+.mark{
+    color:#6C6C6C57;
+    opacity: 1;
+    width: 3px;
+border-right: 3px solid;
+}
+.circle {
+    height:6px;
+    width: 6px;
+    background-color: #6C6C6C;
+    border-radius: 50%;
+  }
+.d{
+    
+    white-space: pre-line;
+}
 .show{
     color: var(--unnamed-color-307fe2);
 text-align: left;
