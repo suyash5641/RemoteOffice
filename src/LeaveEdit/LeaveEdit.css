@@ -49,13 +49,31 @@ text-align: left;
 letter-spacing: NaNpx;
 color: #FF6F01;
 opacity: 1;
-margin-top: 20px;
+margin-top: 14px;
+margin-right: 14px;
 }
 .info-one{
     text-align: left;
 font: normal normal 900 25px/32px Lato;
 letter-spacing: 1.13px;
 color: #FF6F01;
+}
+.info-div{
+    width: 33px;
+    height: 30px;
+    color: var(--unnamed-color-ff6f01);
+    text-align: left;
+    letter-spacing: NaNpx;
+    color: #FF6F01;
+    opacity: 1;
+    margin-top:14px;
+    margin-right: 33px;
+}
+.info-divone{
+    text-align: left;
+    font: normal normal 900 25px/32px Lato;
+    letter-spacing: 1.13px;
+    color: #FF6F01;
 }
 .div-one-text{
     font: normal normal 900 16px/32px Lato;
@@ -64,7 +82,7 @@ color: #6C6C6C;
 width: 81px;
 height: 19px;
 padding-left: 14px;
-margin-top: 19px;
+margin-top: 14px;
 }
 .div-two-text{
     font: normal normal 900 16px/32px Lato;
@@ -73,7 +91,7 @@ color: #6C6C6C;
 width:100px;
 height: 19px;
 padding-left: 14px;
-margin-top: 19px;
+margin-top: 15px;
 }
 .div-three-text{
     font: normal normal 900 16px/32px Lato;
@@ -82,7 +100,7 @@ color: #6C6C6C;
 width:110px;
 height: 19px;
 padding-left: 14px;
-margin-top: 19px;
+margin-top: 14px;
 }
 .st{
     text-align: center;
@@ -148,4 +166,13 @@ border: 1px solid var(--unnamed-color-307fe2);
 background: #FFFFFF 0% 0% no-repeat padding-box;
 border: 1px solid #307FE2;
 opacity: 1;
+font: normal normal normal 18px/36px Lato;
+letter-spacing: 0.81px;
+color: #6C6C6C;
+opacity: 1;
+padding-top: 10px;
+padding-left: 10px;
+}
+.final{
+    margin-top:20px;
 }

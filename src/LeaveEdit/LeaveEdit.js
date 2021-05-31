@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import './LeaveEdit.css';
 import logout from '../img/logout.svg';
 import notificationicon from '../img/notification icon.svg';
@@ -13,14 +13,22 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import { useHistory } from "react-router-dom";
 function LeaveEdit()
 {
+  const [leaveinfo,setLeaveInfo]=useState([]);
   let history = useHistory();
   function handleClick() {
     history.push("/LeaveForm");
   }
-    function Check()
+  function convert(str) {
+    const month= ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const date = new Date(str),
+    mn = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [day,month[mn-1],date.getFullYear()].join(" ");
+}
+    function Check(key)
   {
     
-    var x = document.getElementById("m");
+    var x = document.getElementById(key);
     console.log(x.style.display);
  
   if (x.style.display=== "none") {
@@ -28,84 +36,106 @@ function LeaveEdit()
   } else {
     x.style.display="none";
   }
-  }
+  } 
+  useEffect(() => {
+    const access_token=localStorage.getItem('x-api-key');
+    fetch('http://localhost:8080/api/leave',{
+        method:'GET',
+        headers:{
+         'x-api-key':`${access_token}` 
+       }
+    })
+  .then(response => response.json())
+  .then(data => setLeaveInfo(data));
+  },[]) 
+  console.log("hello");
+  console.log(leaveinfo);
+ 
 
 return(
     <>
     <div className="content">
         <div className="header-form"> 
            <div className="div-grp">
-           <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"16px"}}
-            onClick={()=>{history.goBack()}}/>
-           <span className="txt">Leave Application</span>
+               <KeyboardBackspaceIcon className="arrow" style={{color:"white",marginTop:"16px"}}
+               onClick={()=>{history.goBack()}}/>
+               <span className="txt">Leave Application</span>
            </div>
            <div className="div-grp-two">
-           <img src={notificationicon} className="notification-icon"/> 
-           <img src={logout} className="logout"/> 
+               <img src={notificationicon} className="notification-icon"/> 
+                <img src={logout} className="logout"/> 
            </div>
         </div> 
         <div className="box">
             <div className="div-one">
-            <div className="first-div">
-            <img src={sneeze} className="sickimg"  ></img>
-            <span className="div-one-text" >Sick Leave</span>
-            </div>
-            <span className="info" > <span className="info-one" >3</span>/7</span>
-            </div>
-            <div className="div-one" >
-            <div className="first-div">
-            <img src={sunbed} className="sickimg"  ></img>
-            <span className="div-two-text" >Casual Leave</span>
-            </div>
-            <span className="info" > <span className="info-one" >3</span>/7</span>
+                <div className="first-div">
+                   <img src={sneeze} className="sickimg"  ></img>
+                   <span className="div-one-text" >Sick Leave</span>
+                </div>
+                   <span className="info" > <span className="info-one" >3</span>/7</span>
             </div>
             <div className="div-one" >
-            <div className="first-div">
-            <img src={annual} className="sickimg"  ></img>
-            <span className="div-three-text" >Annual Leave</span>
+                <div className="first-div">
+                   <img src={sunbed} className="sickimg"  ></img>
+                   <span className="div-two-text" >Casual Leave</span>
+                </div>
+                   <span className="info" > <span className="info-one" >3</span>/7</span>
             </div>
-            <span className="info" > <span className="info-one" >3</span>/7</span> 
+            <div className="div-one" >
+                <div className="first-div">
+                  <img src={annual} className="sickimg"  ></img>
+                  <span className="div-three-text" >Annual Leave</span>
+                </div>
+                   <span className="info-div" > <span className="info-divone" >13</span>/21</span> 
             </div>
             <div className="st" >
-            <Button variant='contained'  fullWidth='true'  style={{textTransform: 'none',color:"white", backgroundColor: '#307FE2',width:"180px",
-            height:"50px",marginTop:"40px",marginLeft:"10px" } } 
-            onClick={handleClick}> 
-            Apply Leave
-            
-           </Button> 
-           </div>
-           <br></br>
-           <div className="st" >
-           <span className="recent">Recent leave history</span>
-           </div>
-            <div className="leave-history">
-               
-                <div className="first">
-                <div className="first-add">
-                    <div className="setflex">
-                    <img src={calendericon} className="first-add-img"/> 
-                    <span className="list">05 May 2021</span> 
-                
-                    <span className="list-one">To</span> 
-                    <img src={calendericon} className="first-add-img"/> 
-                    <span  id="list-new" >08 May 2021</span> 
-                    </div>
-                   
-                 </div>
-                 <div>
-                 <i className="set" onClick={Check}>
-                     <EditIcon style={{color:"#307FE2",marginTop:"15px",width:"18px",marginLeft:"20px",
-                    height:"18px"}}/>
-                    </i>
-                 </div>
-                 </div> 
-                 <div className="reset">
-                  <Hide/>
-                 </div>
-                 
-                
-                <div className="second"> </div>
+                 <Button variant='contained'  fullWidth='true'  style={{textTransform: 'none',color:"white", backgroundColor: '#307FE2',width:"180px",
+                 height:"50px",marginTop:"40px",marginLeft:"10px" } } 
+                 onClick={handleClick}> 
+                 Apply Leave
+                </Button> 
             </div>
+            <br></br>
+            <div className="st" >
+                <span className="recent">Recent leave history</span>
+            </div>
+            
+            <div className="leave-history">
+            {leaveinfo.map((c,k)=>(
+                <>
+                <div className="first">
+                  <div className="first-add">
+                    <div className="setflex">
+                      
+                        <img src={calendericon} className="first-add-img"/> 
+                        <span className="list">{convert(leaveinfo[k].leaveFrom.split("T")[0])}</span> 
+                      
+                      
+                        <span className="list-one">To</span> 
+                      
+                      
+                         <img src={calendericon} className="first-add-img"/> 
+                         <span  id="list-new" >{convert(leaveinfo[k].leaveTo.split("T")[0])}</span> 
+                    </div>
+                  </div>
+                  <div>
+                      <i className="set" onClick={()=>Check(k)}>
+                      <EditIcon style={{color:"#307FE2",marginTop:"15px",width:"18px",marginLeft:"20px",
+                       height:"18px"}}/>
+                      </i>
+                 </div>
+                </div> 
+                 <div className="reset">
+                  <Hide index={k} f={leaveinfo[k].id}/>
+                 </div>
+                <div className="second">
+                   <span>{leaveinfo[k].reason}</span>
+                </div>
+                <div className="final"></div>
+                </>
+                 ))}
+            </div>
+            
         </div>
 
         

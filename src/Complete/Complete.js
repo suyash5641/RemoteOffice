@@ -21,7 +21,7 @@ function Holiday()
           <div className="div-grp-two">
             <img src={notificationicon} className="notification-icon"/> 
             <img src={logout} className="logout"/> 
-         </div>
+          </div>
         </div> 
         <div className="checkdiv">
             <img src={check} className="img-checkdiv"/>
@@ -39,7 +39,7 @@ function Holiday()
              onClick={()=>{history.push('/LeaveEdit')}}> 
              Continue
             </Button>
-        </div>
+             </div>
         </div>
         </>
     )

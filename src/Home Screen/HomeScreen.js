@@ -49,14 +49,13 @@ function HomeScreen()
                {isOpen && <span className="detail" >{phno}</span>} 
                {!isOpen && <input onChange={(e)=>setNumber(e.target.value)}></input>}
                </div>
-               <div className="icon-last">
-            
-               <div className="first-div">
-                <img src={mailicon}/>
-                <span className="detail" >suyash.jai@remotestate.com</span>
-                </div>
-                <img src={editicon} onClick={()=>{setIsopen(!isOpen)}} className="edit-icon"/>
+                <div className="icon-last">
+                 <div className="first-div">
+                   <img src={mailicon}/>
+                   <span className="detail" >suyash.jai@remotestate.com</span>
                  </div>
+                 <img src={editicon} onClick={()=>{setIsopen(!isOpen)}} className="edit-icon"/>
+                </div>
 
            </div>
           <div className="poster">
@@ -69,74 +68,63 @@ function HomeScreen()
                 <span  className="message" >& Fight against <span  className="new-message">COVID-19</span></span> 
              </div>
          
-        </div> 
+          </div> 
         <div className="new-div">
             <div className="start">
-            <div className="start-one">
-            <div className="first-divone">
-            <img src={sneeze} className="img-sneeze"  ></img>
-            <span className="sicklogo" >Sick Leave</span>
-            </div>
-            <span className="text-one" >
-            <span className="txt-div">3/</span>7</span>
-            </div>
-            <div className="start-new1">
-            <div className="first-divone">
-            <img src={sunbed} className="img-sunbed" ></img>
-            <span className="sunbedlogo" >Casual Leave</span>
-            </div>
-            <span className="text-one" >
-                <span className="txt-div">6/</span>7</span>
-            </div>
-            <div className="start-new1">
-            <div className="first-divone">
-            <img src={annual} className="img-annual"  ></img>
-            <span className="annuallogo" >Annual leave </span>
-            </div>
-            <span className="text-one-one" >
-            <span className="txt-divone">13/</span>21</span>
-            </div>
+                <div className="start-one">
+                  <div className="first-divone">
+                    <img src={sneeze} className="img-sneeze"  ></img>
+                    <span className="sicklogo" >Sick Leave</span>
+                  </div>
+                    <span className="text-one" >
+                    <span className="txt-div">3/</span>7</span>
+                </div>
+                <div className="start-new1">
+                  <div className="first-divone">
+                     <img src={sunbed} className="img-sunbed" ></img>
+                     <span className="sunbedlogo" >Casual Leave</span>
+                  </div>
+                     <span className="text-one" >
+                     <span className="txt-div">6/</span>7</span>
+                </div>
+                <div className="start-new1">
+                    <div className="first-divone">
+                      <img src={annual} className="img-annual"  ></img>
+                      <span className="annuallogo" >Annual leave </span>
+                    </div>
+                    <span className="text-one-one" >
+                    <span className="txt-divone">13/</span>21</span>
+                </div>
             </div>
             <div className="setdiv">
-            <img src={newimg} className="setimg" ></img>
-            <span className="text-two"  onClick={handleClick}>Leaves</span>
+                <img src={newimg} className="setimg" ></img>
+                <span className="text-two"  onClick={handleClick}>Leaves</span>
             </div>
 
         </div> 
         <div className="div-st">
             <div className="start-one">
         
-            <div className="first-divone">
-             <img className="first-img" src={calendericon}/>
-             <span className="first-txt">05/May/2021</span> 
-             <div>
-             <div className="new-text" >
+                <div className="first-divone">
+                     <img className="first-img" src={calendericon}/>
+                     <span className="first-txt">05/May/2021</span> 
+                    <div>
+                      <div className="new-text" >
                           <span>What I did yesterday?</span>
                           <br></br>
                           <span className="text-divone">Made some changes</span>
                           <br></br> 
                         
-            </div>
-            </div>
-             
-            
-
-            
-          
-            </div> 
-           
-           
-            <div className="setdiv-one">
-            <img src={standup} className="setimg-one" ></img>
-            <div>
-            
-            <span className="text-three" 
-            onClick={()=>{ history.push("/Standup")}}>standup</span>
-            </div>
-            </div>
-
-           
-            
+                      </div>
+                    </div>
+                </div> 
+                <div className="setdiv-one">
+                      <img src={standup} className="setimg-one" ></img>
+                    <div>
+                       <span className="text-three" 
+                        onClick={()=>{ history.push("/Standup")}}>standup</span>
+                    </div>
+                </div>
             </div>
 
         </div>

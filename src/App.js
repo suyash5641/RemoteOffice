@@ -45,7 +45,7 @@ function App() {
         <Route path="/Standup">
           <Standup/>
         </Route>
-        <Route path="/StandupEdit">
+        <Route path="/StandupEdit/:Id">
           <StandupEdit/>
         </Route>
         <Route path="/Standuphistory">

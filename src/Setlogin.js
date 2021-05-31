@@ -27,6 +27,7 @@ function Setlogin() {
   }).then(res=>res.json())
      .then(data=> localStorage.setItem('x-api-key',data.token));
  //  localStorage.setItem('x-api-key',res.data.token);
+  
   }
   
   

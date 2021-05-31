@@ -57,13 +57,13 @@ function LeaveForm()
       else if(c===0)
         setTotal(c+1);
     }*/
-    function convert(str) {
+   /* function convert(str) {
       
         const date = new Date(str),
         mnth = ("0" + (date.getMonth() + 1)).slice(-2),
         day = ("0" + date.getDate()).slice(-2);
       return [day,mnth,date.getFullYear()].join("/");
-    }
+    }*/
  
    /* function Data()
     {
@@ -92,7 +92,7 @@ function LeaveForm()
      const [EndDate, setEndDate] = useState(new Date()); 
      const [reason,setReason]=useState(""); 
      const [leaveType,setLeaveType]=useState("");
-     const [VALUE,setValue]=useState("Select"); 
+    // const [VALUE,setValue]=useState("Select"); 
     const [totalDays, setTotalDays] = React.useState(1);
 
    React.useEffect(() => {
@@ -100,7 +100,7 @@ function LeaveForm()
       setTotalDays(1+(Math.floor((EndDate.getTime()-StartDate.getTime())/86400000)));
     //  console.log(totalDays);
     }, [StartDate,EndDate])
-   
+    
     const[a,setVal]=useState("true");
     const[start,setStart]=useState("Select");
     function handle()
@@ -116,6 +116,7 @@ function LeaveForm()
      // console.log(start,"hello");
       setLeaveType(id);
     }
+    const access_token=localStorage.getItem('x-api-key');
     const Submit = () => {
       history.push('/Complete');
  
@@ -126,7 +127,8 @@ function LeaveForm()
         reason: reason,
       }
       console.log(data);
-      const access_token=localStorage.getItem('x-api-key');
+     
+      console.log(access_token);
       fetch('http://localhost:8080/api/leave',{
         method:'POST',
         body:JSON.stringify(data),
@@ -135,8 +137,9 @@ function LeaveForm()
           'x-api-key':`${access_token}` 
         }
       })
+     
     }
-   
+  
     
    
 return (
@@ -159,10 +162,10 @@ return (
               <div className="first-divone">
               <label className="label-text">From Date:</label>
               <DatePicker selected={StartDate} 
-            onChange={(value)=>{setStartDate(value)}}
-            dateFormat='dd/MM/yyyy'
+              onChange={(value)=>{setStartDate(value)}}
+              dateFormat='dd/MM/yyyy'
               minDate={new Date()}
-             className="date"
+              className="date"
               ></DatePicker> 
               
               </div> 
@@ -171,38 +174,32 @@ return (
           <div className="start-two">
               <label className="label-text-one">To Date: </label>
               <DatePicker selected={EndDate} 
-            onChange={(value)=>{setEndDate(value)}}
-            dateFormat='dd/MM/yyyy'
+              onChange={(value)=>{setEndDate(value)}}
+              dateFormat='dd/MM/yyyy'
               minDate={StartDate}
               className="date-one"/>
               
           </div> 
           <div className="style-div" >
-        
-              <label className="labletext" >Leave type:</label>
+                <label className="labletext" >Leave type:</label>
                 <span className="select-form">
-                 <span  onClick={handle} >{start}</span>
+                  <span  onClick={handle} >{start}</span>
                     {!a && <div  onClick={handle}>
                    <div>
-                    <span className="leave" onClick={()=>handleChange("Sick leave")}>Sick leave</span>
+                     <span className="leave" onClick={()=>handleChange("sick")}>Sick leave</span>
                    </div>
                    <div>
-                   <span className="leave" onClick={()=>handleChange("casual leave")}>Casual leave</span>
+                     <span className="leave" onClick={()=>handleChange("casual")}>Casual leave</span>
                    </div>
                    <div>
-                    <span className="leave" onClick={()=>handleChange("others")}>others</span>
-                    </div>
-                    </div>}
+                      <span className="leave" onClick={()=>handleChange("other")}>others</span>
+                   </div>
+                   </div>}
                 </span>
-              
-           
-              
-              
           </div> 
           <div>
               <label className="label-text">Total Days:</label>
               <input type="numeric" className="day-calc" 
-              
               value={totalDays}></input>
           </div>   
           <div >

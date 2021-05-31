@@ -15,19 +15,21 @@
   width: 100%;
   flex: 1 1 auto;
   flex-direction: column;
+  position: relative
 }
 .image
 {
-  position: relative; 
+  
   width:100%;
 }
 .image-two
 {
-  margin-top:15px;
-  margin-left: -161px;
-  left:50%;
+  margin-top: 30px;
+  margin-left: 37px;
   z-index:1;
+
   position: absolute;
+  width: 85%;
 }
 .text-change{
   top:592px;

@@ -27,7 +27,9 @@ border-radius: 7px;
 opacity: 1;
 margin-left: 14px;
 height: 244px;
-width: 90%;
+width: 87%;
+padding-left: 14px;
+padding-top: 20px;
 }
 .bttn{
     text-align: center;

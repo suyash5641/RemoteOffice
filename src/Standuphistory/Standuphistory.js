@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import logout from '../img/logout.svg';
 import notificationicon from '../img/notification icon.svg';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
@@ -7,18 +7,55 @@ import Edit from '../img/Edit2icon.svg';
 import './Standuphistory.css';
 import { useHistory } from "react-router-dom";
 import reactDom from 'react-dom';
+import { keys } from "@material-ui/core/styles/createBreakpoints";
+import StandupEdit from "../StandupEdit/StandupEdit";
 function Standuphistory()
 {
     const[state,Setstate]=useState(0);
+    const[standUp,setStandUp]=useState([]);
+    const[idn,setId]=useState(0);
     let history=useHistory();
+    const[curr_date,setN]=useState(new Date());
+  
+    useEffect(() => {
+       const access_token=localStorage.getItem('x-api-key');
+        fetch('http://localhost:8080/api/standup',{
+            method:'GET',
+            headers:{
+             'x-api-key':`${access_token}` 
+           }
+        })
+      .then(response => response.json())
+      .then(data => setStandUp(data)); 
+      const month= ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const date = new Date(),
+        mn = ("0" + (date.getMonth() + 1)).slice(-2),
+        day = ("0" + date.getDate()).slice(-2);
+        setN(day+"/"+month[mn-1]+"/"+date.getFullYear());
+       // console.log(day+"/"+month[mn-1]+"/"+date.getFullYear());
+    },[])
+   // console.log(curr_date); 
+    function convert() {
+        
+      alert("called");
+    }
+    function handleEdit(pos,t)
+    {  
+      // console.log(standUp[t].data);
+  
+    
+        history.push(`/StandupEdit/${pos}`);
+       
+       
+    }
    function Open(v)
    {
-      // console.log(v);
-       const x=document.getElementById("details"+"-"+v);
+      
+       const x=document.getElementById(v);
        if(state===0)
        {
         x.style.height ="fit-content";
-       const z=document.getElementById("show"+"-"+v);
+       const z=document.getElementById(v+5);
        const c=(x.offsetHeight-35)+"px";
        Setstate(1);
        z.style.marginTop=c;
@@ -26,7 +63,7 @@ function Standuphistory()
        else
        {
         x.style.height ="138px";
-       const z=document.getElementById("show"+"-"+v);
+       const z=document.getElementById(v+5);
        Setstate(0);
        z.style.marginTop="78px";
        }
@@ -50,84 +87,44 @@ function Standuphistory()
                  <span className="textsecond">Last five Standups</span> 
                  <img src={calendericon} className="divimg"></img>
             </div>
-            <div id="details-zero" className="details" >
+            
+            {standUp.map((c,k)=>k<2 && (
+            <div id={k} className="details" >
+            
+                
                  <div className="text-grpfirst">
                     <div className="text-grpfirst">
                        <img src={calendericon} className="divimgone"></img>
-                       <span className="divtextone">24/May/2021</span>
+                       <span className="divtextone">{curr_date}</span>
                      
                     </div>
-                    <img src={Edit} className="Editicon2"/>
+                    <img src={Edit} onClick={()=>handleEdit(standUp[k].id,k)} className="Editicon2"/> 
+                   
                  </div> 
                  <div className="prev-standup">
                       <div className="standup-content">
                           <span>What I Did Yesterday</span>
                           <br></br>
-                          <span>Made some changes in corona app</span>
+                          <span>{standUp[k].data.split(",")[0]}</span>
                           <br></br>
-                          <span>as directed</span>
-                          <br></br>
-                          <span>What Will I Do Today </span>
-                          <br></br>
-                          <span>Made some changes </span>
-                          <br></br>
-                          <span>push code </span>
-                          <br></br>
-                          <span>Made some changes </span>
-                          <br></br>
-                          <span>push code </span>
-                          <span>Made some changes </span>
-                          <br></br>
-                          <span>push code </span>
-                          <span>Made some changes </span>
-                          <br></br>
-                          <span>push code </span>
+                          <span>What Will I Do Today</span>
+                          <span>{standUp[k].data.split(",")[1]}</span>
+                          
                       </div> 
-                      <div id="show-zero" className="show" onClick={()=>Open("zero")}>
+                      <div id={k+5} className="show" onClick={()=>Open(k)}>
                           <span >Show...</span>
                       </div>
                  </div>
+                 
+               
+           
 
             </div>
-            <div id="details-one" className="details" >
-                 <div className="text-grpfirst">
-                    <div className="text-grpfirst">
-                       <img src={calendericon} className="divimgone"></img>
-                       <span className="divtextone">24/May/2021</span>
-                     
-                    </div>
-                    <img src={Edit} className="Editicon2"/>
-                 </div> 
-                 <div className="prev-standup">
-                      <div className="standup-content">
-                          <span>What I Did Yesterday</span>
-                          <br></br>
-                          <span>Made some changes in corona app</span>
-                          <br></br>
-                          <span>as directed</span>
-                          <br></br>
-                          <span>What Will I Do Today </span>
-                          <br></br>
-                          <span>Made some changes </span>
-                          <br></br>
-                          <span>push code </span>
-                          <br></br>
-                          <span>Made some changes </span>
-                          <br></br>
-                          <span>push code </span>
-                          <span>Made some changes </span>
-                          <br></br>
-                          <span>push code </span>
-                          <span>Made some changes </span>
-                          <br></br>
-                          <span>push code </span>
-                      </div> 
-                      <div id="show-one" className="show" onClick={()=>Open("one")}>
-                          <span >Show...</span>
-                      </div>
-                 </div>
+            ))}
 
-            </div>
+         
+             
+          
             
         </div> 
         
