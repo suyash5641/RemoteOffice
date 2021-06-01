@@ -48,7 +48,7 @@ function LeaveEdit()
   .then(response => response.json())
   .then(data => setLeaveInfo(data));
   },[]) 
-  console.log("hello");
+//  console.log("hello");
   console.log(leaveinfo);
  
 

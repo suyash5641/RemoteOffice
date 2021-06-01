@@ -120,13 +120,17 @@ border-radius: 8px;
     letter-spacing: 0.72px;
     color: #6C6C6C;
     opacity: 1;
-    margin-left: -137px;
-    margin-top:77px;
-    width:167px;
-opacity: 1;
+    margin-left: 5px;
+    margin-top: 20px;
+    width: 45vw;
+    opacity: 1;
 }
-.text-divone{
-
+.full-div{
+  display: flex;
+  flex-direction: column;
+}
+.div-last-one{
+display: flex;
 }
 .txt-div{
     font: normal normal 900 19px/27px Lato;

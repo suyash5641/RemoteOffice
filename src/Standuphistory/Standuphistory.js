@@ -27,18 +27,17 @@ function Standuphistory()
         })
       .then(response => response.json())
       .then(data => setStandUp(data)); 
-      const month= ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        const date = new Date(),
-        mn = ("0" + (date.getMonth() + 1)).slice(-2),
-        day = ("0" + date.getDate()).slice(-2);
-        setN(day+"/"+month[mn-1]+"/"+date.getFullYear());
+    
        // console.log(day+"/"+month[mn-1]+"/"+date.getFullYear());
     },[])
    // console.log(curr_date); 
-    function convert() {
-        
-      alert("called");
-    }
+   function convert(str) {
+    const month= ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const date = new Date(str),
+    mn = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [day,month[mn-1],date.getFullYear()].join(" ");
+}
     function handleEdit(pos,t)
     {  
       // console.log(standUp[t].data);
@@ -56,7 +55,7 @@ function Standuphistory()
        {
         x.style.height ="fit-content";
        const z=document.getElementById(v+5);
-       const c=(x.offsetHeight-35)+"px";
+       const c=(x.offsetHeight-40)+"px";
        Setstate(1);
        z.style.marginTop=c;
        }
@@ -88,14 +87,14 @@ function Standuphistory()
                  <img src={calendericon} className="divimg"></img>
             </div>
             
-            {standUp.map((c,k)=>k<2 && (
+            {standUp.map((c,k)=>k<5 && (
             <div id={k} className="details" >
             
                 
                  <div className="text-grpfirst">
                     <div className="text-grpfirst">
                        <img src={calendericon} className="divimgone"></img>
-                       <span className="divtextone">{curr_date}</span>
+                       <span className="divtextone">{convert(standUp[k].createdAt.split("T")[0])}</span>
                      
                     </div>
                     <img src={Edit} onClick={()=>handleEdit(standUp[k].id,k)} className="Editicon2"/> 
@@ -103,11 +102,11 @@ function Standuphistory()
                  </div> 
                  <div className="prev-standup">
                       <div className="standup-content">
-                          <span className="mark"></span><span>What I Did Yesterday?</span>
+                          <span className="mark"></span><span>What I did yesterday?</span>
                           <br></br>
                           <span className="circle"></span> <span className="d">{standUp[k].data.split(",")[0]}</span>
                           <br></br>
-                           <span className="mark"></span><span>What Will I Do Today?</span>
+                           <span className="mark"></span><span>What will I do today?</span>
                           <br></br>
                           <span className="circle"></span><span className="d">{standUp[k].data.split(",")[1]}</span>
                           

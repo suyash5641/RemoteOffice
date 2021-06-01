@@ -106,17 +106,21 @@ function HomeScreen()
             <div className="start-one">
         
                 <div className="first-divone">
-                     <img className="first-img" src={calendericon}/>
-                     <span className="first-txt">05/May/2021</span> 
-                    <div>
-                      <div className="new-text" >
+                      <div className="full-div"> 
+                        <div className="div-last-one">
+                           <img className="first-img" src={calendericon}/>
+                           <span className="first-txt">05/May/2021</span> 
+                        </div>
+                        <div className="new-text" >
                           <span>What I did yesterday?</span>
                           <br></br>
                           <span className="text-divone">Made some changes</span>
                           <br></br> 
                         
                       </div>
-                    </div>
+                      </div>
+                     
+                  
                 </div> 
                 <div className="setdiv-one">
                       <img src={standup} className="setimg-one" ></img>

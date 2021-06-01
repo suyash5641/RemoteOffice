@@ -4,6 +4,7 @@ import Path159 from './Path 159.svg';
 import Login from './login/Login';
 import HomeScreen from './Home Screen/HomeScreen';
 import LeaveForm from './Leaveform/LeaveForm';
+import Leavemodify from './Leavemodify/Leavemodify'
 import LeaveEdit from './LeaveEdit/LeaveEdit';
 import Standup from './Standup/Standup';
 import StandupEdit from './StandupEdit/StandupEdit';
@@ -30,7 +31,8 @@ function App() {
       <Link to="/StandupEdit"></Link> 
       <Link to="/Standuphistory"></Link>
       <Link to="/Holiday"></Link>
-      <Link to="/Complete"></Link>
+      <Link to="/Complete"></Link> 
+      <Link to="/Leavemodify"></Link>
 
       <Switch>
         <Route path="/HomeScreen">
@@ -56,6 +58,9 @@ function App() {
         </Route>
         <Route path="/Complete">
           <Complete/>
+        </Route>
+        <Route path="/Leavemodify/:N">
+          <Leavemodify/>
         </Route>
         <Route path="/">
           <Login/>

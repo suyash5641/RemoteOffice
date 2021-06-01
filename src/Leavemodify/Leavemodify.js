@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import './LeaveForm.css';
+import React, { useState ,useEffect} from "react";
 import logout from '../img/logout.svg';
 import notificationicon from '../img/notification icon.svg';
 import DatePicker from "react-datepicker";
@@ -17,7 +16,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import axios from 'axios';
 import ButtonComponent from '../sdk/ButtonComponent';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -40,69 +39,59 @@ const useStyles = makeStyles(theme=>({
 }));
 
 
-function LeaveForm()
+function Leavemodify()
 {
   let history=useHistory();
     
    //  const[total,setTotal]=useState(0);
     const classes = useStyles();
-  /*  function calc()
-    {
-      const a=Date2.getTime();
-      const b=Date1.getTime();
-      const result=(a-b)/(86400000);
-      const c=Math.floor(result);
-      if(c>=1)
-        setTotal(c+1);
-      else if(c===0)
-        setTotal(c+1);
-    }*/
-   /* function convert(str) {
-      
-        const date = new Date(str),
-        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-        day = ("0" + date.getDate()).slice(-2);
-      return [day,mnth,date.getFullYear()].join("/");
-    }*/
- 
-   /* function Data()
-    {
-     // console.log(convert(Date1));
-      //console.log(convert(Date2));
-      //console.log(r);
-      
-      const d={start_date:convert(Date1),end_date:convert(Date2),reason:r}
-      const n={...d};
-      console.log(n);
-      fetch("http://localhost:8080/leave",{
-        method:'POST',
-        headers:{'content-type':'application.json'},
-        body:JSON.stringify(d)
-       }).then(v=>v.json()).then(response=>{
-      if(response){
-        alert("created ");
-      }
-    })
-    }*/
-      
-    /**
-     * ritik block starts
-     */
+    const {N}=useParams();
      const [StartDate, setStartDate] = useState(new Date()); 
      const [EndDate, setEndDate] = useState(new Date()); 
      const [reason,setReason]=useState(""); 
      const [leaveType,setLeaveType]=useState("");
-    // const [VALUE,setValue]=useState("Select"); 
+     const [VALUE,setValue]=useState("Select"); 
+    const [LEAVE, setLEAVE] = React.useState([]);
     const [totalDays, setTotalDays] = React.useState(1);
-
+    const[a,setVal]=useState("true");
+    const[start,setStart]=useState("Select"); 
+    const[w,setW]=useState("");
    React.useEffect(() => {
       //calcutae total days
       setTotalDays(1+(Math.floor((EndDate.getTime()-StartDate.getTime())/86400000)));
     //  console.log(totalDays);
     }, [StartDate,EndDate])
+    useEffect(() => {
+        async function fetchDetail()
+        {
+        const access_token=localStorage.getItem('x-api-key');
+        const response=await fetch('http://localhost:8080/api/leave/'+N,{
+            method:'GET',
+            headers:{
+             'x-api-key':`${access_token}` 
+           }
+        }) 
+        const json=await response.json();
+        console.log(json);
+       setStartDate(new Date(json.leaveFrom));
+       setEndDate(new Date(json.leaveTo));
+       setW(json.reason);
+       setStart(json.leaveType);
+
+    }
     
-    const[a,setVal]=useState("true");
-    const[start,setStart]=useState("Select");
+    fetchDetail();
+
+    },[]) 
+   
+    
+  /*  if(LEAVE)
+    {
+       // console.log(LEAVE);
+        const z=new Date(LEAVE.leaveFrom);
+        //console.log(z);
+    }
+    */
     function handle()
     {
      setVal(!a);
@@ -118,7 +107,7 @@ function LeaveForm()
     }
     const access_token=localStorage.getItem('x-api-key');
     const Submit = () => {
-      history.push('/Complete');
+      history.push('/LeaveEdit');
  
       const data = {
         leaveFrom:StartDate.toISOString(),
@@ -128,9 +117,9 @@ function LeaveForm()
       }
       console.log(data);
      
-      console.log(access_token);
-      fetch('http://localhost:8080/api/leave',{
-        method:'POST',
+     // console.log(access_token);
+      fetch('http://localhost:8080/api/leave/'+N,{
+        method:'PUT',
         body:JSON.stringify(data),
         headers:{
          // "Content-type":"application/json;charset=UTF-8",
@@ -161,10 +150,10 @@ return (
             
               <div className="first-divone">
               <label className="label-text">From Date:</label>
-              <DatePicker selected={StartDate} 
+              <DatePicker  selected={StartDate}
               onChange={(value)=>{setStartDate(value)}}
               dateFormat='dd/MM/yyyy'
-              minDate={new Date()}
+             
               className="date"
               ></DatePicker> 
               
@@ -176,7 +165,7 @@ return (
               <DatePicker selected={EndDate} 
               onChange={(value)=>{setEndDate(value)}}
               dateFormat='dd/MM/yyyy'
-              minDate={StartDate}
+              
               className="date-one"/>
               
           </div> 
@@ -205,7 +194,7 @@ return (
           <div >
               <div className="label-last">
               <label className="label-text-new">Reason:</label>
-              <textarea type="text" className="reason" name="resonn" 
+              <textarea type="text" className="reason" name="resonn" defaultValue={w}
               onChange={(e)=>{setReason(e.target.value)}}
               ></textarea>
               </div>
@@ -224,4 +213,4 @@ return (
     </div>
 )
 }
-export default LeaveForm;
+export default Leavemodify;

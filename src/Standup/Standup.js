@@ -32,6 +32,7 @@ function Standup()
           'x-api-key':`${localStorage.getItem('x-api-key')}` 
         }
       })
+      history.push("/Standuphistory");
     }
     function handleClick() {
       history.push("/Standuphistory");
