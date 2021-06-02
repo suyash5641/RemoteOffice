@@ -148,7 +148,7 @@ return (
           <form className="fm" >
           <div className="start-new">
             
-              <div className="first-divone">
+              <div className="leave-divone">
               <label className="label-text">From Date:</label>
               <DatePicker  selected={StartDate}
               onChange={(value)=>{setStartDate(value)}}

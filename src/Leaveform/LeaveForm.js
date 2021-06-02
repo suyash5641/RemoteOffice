@@ -159,7 +159,7 @@ return (
           <form className="fm" >
           <div className="start-new">
             
-              <div className="first-divone">
+              <div className="leave-divone">
               <label className="label-text">From Date:</label>
               <DatePicker selected={StartDate} 
               onChange={(value)=>{setStartDate(value)}}
@@ -198,7 +198,7 @@ return (
                 </span>
           </div> 
           <div>
-              <label className="label-text">Total Days:</label>
+              <label className="label-textdays">Total Days:</label>
               <input type="numeric" className="day-calc" 
               value={totalDays}></input>
           </div>   

@@ -14,6 +14,10 @@ import { useHistory } from "react-router-dom";
 function LeaveEdit()
 {
   const [leaveinfo,setLeaveInfo]=useState([]);
+  const[sickleave,setSickleave]=useState(0);
+  const[casualleave,setCasualleave]=useState(0);
+  const[totalsickleave,setTotalSickleave]=useState(0);
+  const[totalcasualleave,setTotalCasualleave]=useState(0);
   let history = useHistory();
   function handleClick() {
     history.push("/LeaveForm");
@@ -50,7 +54,29 @@ function LeaveEdit()
   },[]) 
 //  console.log("hello");
   console.log(leaveinfo);
- 
+  useEffect(() => {
+    async function fetchLeave()
+    {
+    const access_token=localStorage.getItem('x-api-key');
+    const response=await fetch('http://localhost:8080/api/leave/stat',{
+        method:'GET',
+        headers:{
+         'x-api-key':`${access_token}` 
+       }
+    }) 
+    const json=await response.json();
+    console.log(json);
+    setSickleave(json[0].usedLeaves);
+    setCasualleave(json[1].usedLeaves);
+    setTotalSickleave(json[0].allowedLeaves);
+    setTotalCasualleave(json[1].allowedLeaves);
+  
+  
+  }
+  
+  fetchLeave();
+  
+  },[]) 
 
 return(
     <>
@@ -72,14 +98,14 @@ return(
                    <img src={sneeze} className="sickimg"  ></img>
                    <span className="div-one-text" >Sick Leave</span>
                 </div>
-                   <span className="info" > <span className="info-one" >3</span>/7</span>
+                   <span className="info" > <span className="info-one" >{sickleave}</span>/{totalsickleave}</span>
             </div>
             <div className="div-one" >
                 <div className="first-div">
                    <img src={sunbed} className="sickimg"  ></img>
                    <span className="div-two-text" >Casual Leave</span>
                 </div>
-                   <span className="info" > <span className="info-one" >3</span>/7</span>
+                   <span className="info" > <span className="info-one" >{casualleave}</span>/{totalcasualleave}</span>
             </div>
             <div className="div-one" >
                 <div className="first-div">

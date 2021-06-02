@@ -1,3 +1,4 @@
+import React, { useEffect} from "react";
 import './HomeScreen.css';
 import RSlogotop from '../img/RS-logo-top.svg';
 import notificationicon from '../img/notification icon.svg';
@@ -19,14 +20,97 @@ function HomeScreen()
 {
     const[isOpen,setIsopen]=useState("true");
     const[phno,setNumber]=useState("88888888");
-    const[designation,setDesign]=useState("Developer");
+    const[designation,setDesign]=useState("Developer");  
+    const[standup_date,setStandupDate]=useState([]); 
+    const[today,setToday]=useState("");
+    const[prev,setPrev]=useState("");
+    const[email,setEmail]=useState("");
+    const[name,setName]=useState(""); 
+    const[sickleave,setSickleave]=useState(0);
+    const[casualleave,setCasualleave]=useState(0);
+    const[totalsickleave,setTotalSickleave]=useState(0);
+    const[totalcasualleave,setTotalCasualleave]=useState(0);
     let history = useHistory();
+    function convert(str) {
+      const month= ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      const date = new Date(str),
+      mn = ("0" + (date.getMonth() + 1)).slice(-2),
+      day = ("0" + date.getDate()).slice(-2);
+    return [day,month[mn-1],date.getFullYear()].join("/");
+  }
+    useEffect(() => {
+      async function fetchStandup()
+      {
+      const access_token=localStorage.getItem('x-api-key');
+      const response=await fetch('http://localhost:8080/api/standup',{
+          method:'GET',
+          headers:{
+           'x-api-key':`${access_token}` 
+         }
+      }) 
+      const json=await response.json();
+      console.log(json[0]);
+      setStandupDate(convert(json[0].createdAt.split("T")[0]));
+      setPrev(json[0].data.split(",")[0]);
+      setToday(json[0].data.split(",")[1]);
+    
+  }
+  
+  fetchStandup();
+
+  },[]) 
+  useEffect(() => {
+    async function fetchUser()
+    {
+    const access_token=localStorage.getItem('x-api-key');
+    const response=await fetch('http://localhost:8080/api/user',{
+        method:'GET',
+        headers:{
+         'x-api-key':`${access_token}` 
+       }
+    }) 
+    const json=await response.json();
+    console.log(json);
+    setNumber(json.phone);
+    setDesign(json.position);
+    setEmail(json.email); 
+    setName(json.name);
+
+
+}
+
+fetchUser();
+
+},[]) 
+useEffect(() => {
+  async function fetchLeave()
+  {
+  const access_token=localStorage.getItem('x-api-key');
+  const response=await fetch('http://localhost:8080/api/leave/stat',{
+      method:'GET',
+      headers:{
+       'x-api-key':`${access_token}` 
+     }
+  }) 
+  const json=await response.json();
+  console.log(json);
+  setSickleave(json[0].usedLeaves);
+  setCasualleave(json[1].usedLeaves);
+  setTotalSickleave(json[0].allowedLeaves);
+  setTotalCasualleave(json[1].allowedLeaves);
+
+
+}
+
+fetchLeave();
+
+},[]) 
     function handleClick() {
       history.push("/LeaveEdit");
     }
     return(
         <>
-        <div>
+        <div className="Home-body">
           <div className="heading">
             <img src={RSlogotop} className="RSlogotop"/> 
             <div className="div-grp-two">
@@ -37,7 +121,7 @@ function HomeScreen()
            <div className="intro"> 
                <div className="div-intro"> 
                <div className="t">
-               <span className="intro-one">Hi, Suyash
+               <span className="intro-one">Hi, {name}
                </span><br></br>
                {isOpen && <span className="intro-two">{designation}</span>}
                {!isOpen && <input onChange={(e)=>setDesign(e.target.value)}></input>}
@@ -52,7 +136,7 @@ function HomeScreen()
                 <div className="icon-last">
                  <div className="first-div">
                    <img src={mailicon}/>
-                   <span className="detail" >suyash.jai@remotestate.com</span>
+                   <span className="detail" >{email}</span>
                  </div>
                  <img src={editicon} onClick={()=>{setIsopen(!isOpen)}} className="edit-icon"/>
                 </div>
@@ -77,7 +161,7 @@ function HomeScreen()
                     <span className="sicklogo" >Sick Leave</span>
                   </div>
                     <span className="text-one" >
-                    <span className="txt-div">3/</span>7</span>
+                    <span className="txt-div">{sickleave}/</span>{totalsickleave}</span>
                 </div>
                 <div className="start-new1">
                   <div className="first-divone">
@@ -85,12 +169,12 @@ function HomeScreen()
                      <span className="sunbedlogo" >Casual Leave</span>
                   </div>
                      <span className="text-one" >
-                     <span className="txt-div">6/</span>7</span>
+                     <span className="txt-div">{casualleave}/</span>{totalcasualleave}</span>
                 </div>
                 <div className="start-new1">
                     <div className="first-divone">
                       <img src={annual} className="img-annual"  ></img>
-                      <span className="annuallogo" >Annual leave </span>
+                      <span className="annuallogo" >Annual Leave </span>
                     </div>
                     <span className="text-one-one" >
                     <span className="txt-divone">13/</span>21</span>
@@ -103,18 +187,22 @@ function HomeScreen()
 
         </div> 
         <div className="div-st">
-            <div className="start-one">
+            <div className="start-divst">
         
-                <div className="first-divone">
+                <div className="first-div-one">
                       <div className="full-div"> 
                         <div className="div-last-one">
                            <img className="first-img" src={calendericon}/>
-                           <span className="first-txt">05/May/2021</span> 
+                           <span className="first-txt">{standup_date}</span> 
                         </div>
                         <div className="new-text" >
                           <span>What I did yesterday?</span>
                           <br></br>
-                          <span className="text-divone">Made some changes</span>
+                          <span className="text-divone">{prev}</span>
+                          <br></br> 
+                          <span>What will I do today?</span>
+                          <br></br>
+                          <span className="text-divone">{today}</span>
                           <br></br> 
                         
                       </div>
@@ -126,7 +214,7 @@ function HomeScreen()
                       <img src={standup} className="setimg-one" ></img>
                     <div>
                        <span className="text-three" 
-                        onClick={()=>{ history.push("/Standup")}}>standup</span>
+                        onClick={()=>{ history.push("/Standup")}}>Standup</span>
                     </div>
                 </div>
             </div>
