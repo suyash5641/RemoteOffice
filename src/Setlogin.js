@@ -36,7 +36,7 @@ function Setlogin() {
         <>
         <form className="form">
         <input type="text" id="inputdefault" className="login" placeholder="Login Id" onChange={(e)=>setUserid(e.target.value)}></input>
-        <input type="text" id="inputdefault" className="login" placeholder="Password" onChange={(e)=>setUserpassword(e.target.value)}></input>
+        <input type="password" id="inputdefault" className="login" placeholder="Password" onChange={(e)=>setUserpassword(e.target.value)}></input>
           <ButtonComponent onClick={handleClick} > 
           Login
         </ButtonComponent>

@@ -141,7 +141,7 @@ return (
           </div>
           <div className="div-grp-two">
             <img src={notificationicon} className="notification-icon"/> 
-            <img src={logout} className="logout"/> 
+            <img src={logout} onClick={()=>{history.push("/")}} className="logout"/> 
             </div>
          </div>
          <div className="new-form">
