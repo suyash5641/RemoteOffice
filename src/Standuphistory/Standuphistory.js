@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React from "react";
 import logout from '../img/logout.svg';
 import notificationicon from '../img/notification icon.svg';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
@@ -6,31 +6,12 @@ import calendericon from '../img/calendericon.svg';
 import Edit from '../img/Edit2icon.svg';
 import './Standuphistory.css';
 import { useHistory } from "react-router-dom";
-import reactDom from 'react-dom';
-import { keys } from "@material-ui/core/styles/createBreakpoints";
-import StandupEdit from "../StandupEdit/StandupEdit";
+import useStanduphistory from "./useStanduphistory";
 function Standuphistory()
 {
-    const[state,Setstate]=useState(0);
-    const[standUp,setStandUp]=useState([]);
-    const[idn,setId]=useState(0);
-    let history=useHistory();
-    const[curr_date,setN]=useState(new Date());
   
-    useEffect(() => {
-       const access_token=localStorage.getItem('x-api-key');
-        fetch('http://localhost:8080/api/standup',{
-            method:'GET',
-            headers:{
-             'x-api-key':`${access_token}` 
-           }
-        })
-      .then(response => response.json())
-      .then(data => setStandUp(data)); 
-    
-       // console.log(day+"/"+month[mn-1]+"/"+date.getFullYear());
-    },[])
-   // console.log(curr_date); 
+   const {standUp,state,Setstate}=useStanduphistory();
+   let history=useHistory();
    function convert(str) {
     const month= ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const date = new Date(str),
@@ -40,13 +21,9 @@ function Standuphistory()
 }
     function handleEdit(pos,t)
     {  
-      // console.log(standUp[t].data);
-  
-    
-        history.push(`/StandupEdit/${pos}`);
-       
-       
+    history.push(`/StandupEdit/${pos}`);
     }
+ 
    function Open(v)
    {
       
@@ -78,13 +55,13 @@ function Standuphistory()
                     <span className="txt">Previous Standups</span>
                 </div>
                 <div className="div-grp-two">
-                    <img src={notificationicon} className="notification-icon"/> 
-                    <img src={logout} onClick={()=>{history.push("/")}} className="logout"/> 
+                    <img src={notificationicon} alt="notification icon" className="notification-icon"/> 
+                    <img src={logout} alt="logout icon" onClick={()=>{history.push("/")}} className="logout"/> 
                 </div>
             </div> 
             <div className="text-grpfirst">
                  <span className="textsecond">Last five Standups</span> 
-                 <img src={calendericon} className="divimg"></img>
+                 <img src={calendericon} alt="calender icon" className="divimg"></img>
             </div>
             
             {standUp.map((c,k)=>k<5 && (
@@ -93,22 +70,43 @@ function Standuphistory()
                 
                  <div className="text-grpfirst">
                     <div className="text-grpfirst">
-                       <img src={calendericon} className="divimgone"></img>
+                       <img src={calendericon} alt="calender icon" className="divimgone"></img>
                        <span className="divtextone">{convert(standUp[k].createdAt.split("T")[0])}</span>
                      
                     </div>
-                    <img src={Edit} onClick={()=>handleEdit(standUp[k].id,k)} className="Editicon2"/> 
+                    <img src={Edit} alt="edit icon" onClick={()=>handleEdit(standUp[k].id,k)} className="Editicon2"/> 
                    
                  </div> 
                  <div className="prev-standup">
                       <div className="standup-content">
-                          <span className="mark"></span><span>What I did yesterday?</span>
-                          <br></br>
-                          <span className="circle"></span> <span className="d">{standUp[k].data.split(",")[0]}</span>
-                          <br></br>
-                           <span className="mark"></span><span>What will I do today?</span>
-                          <br></br>
-                          <span className="circle"></span><span className="d">{standUp[k].data.split(",")[1]}</span>
+                            <span className="mark"></span><span className="mark-txt">What I did yesterday?</span>
+                            <div className="content-new">
+                              
+                              { [...Array(Object.keys(standUp[k].data?.split("**")[0]?.split("\n")).length)].map((ele,index)=>( 
+                                  
+                                    <div className="circle-div" >
+                                      <div className="circle"></div> 
+                                      <span className="d">{standUp[k].data.split("**")[0].split("\n")[index]}</span>  
+                                    </div>
+                                   
+                  
+                              ) )}
+   
+                             
+                          </div>
+                           <span className="mark"></span><span className="mark-txt">What will I do today?</span>
+                           <div className="content-new">
+                                 
+                           { [...Array(Object.keys(standUp[k].data?.split("**")[1]?.split("\n")).length)].map((ele,index)=>( 
+                                  
+                                    <div className="circle-div" >
+                                      <div className="circle"></div> 
+                                      <span className="d">{standUp[k].data.split("**")[1].split("\n")[index]}</span>  
+                                    </div>
+                                   
+                  
+                           ) )}
+                          </div>
                           
                       </div> 
                       <div id={k+5} className="show" onClick={()=>Open(k)}>

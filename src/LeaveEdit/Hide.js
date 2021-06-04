@@ -1,6 +1,5 @@
 
-import React, { useState ,useEffect} from 'react';
-import EditIcon from '@material-ui/icons/Edit';
+import React, { useState } from 'react';
 import closeicon from '../img/closeicon.svg';
 import './Hide.css';
 import './LeaveEdit.css';
@@ -34,6 +33,7 @@ function Hide(props)
         }
        })
           .then(() =>console.log('Delete successful'));
+          history.push('/Message');
     }
   
  
@@ -42,7 +42,7 @@ function Hide(props)
   {
     setIsopen(!isOpen);
     var x = document.getElementById(props.index);
-  if (x.style.display== "none") {
+  if (x.style.display=== "none") {
     x.style.display = "block";
   } else {
     x.style.display = "none";
@@ -52,7 +52,7 @@ function Hide(props)
    <div >
     
     <div id={props.index} className="m"> 
-    <img  src={closeicon} className="button-style" onClick={Check}/> 
+    <img  src={closeicon} alt="closeicon" className="button-style" onClick={Check}/> 
     <br></br> 
     <span className="text-box" onClick={()=>{  history.push(`/Leavemodify/${props.f}`)}}>modify leave</span>
     <br></br>

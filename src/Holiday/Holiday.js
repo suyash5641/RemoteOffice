@@ -17,12 +17,12 @@ function Holiday()
              <span className="txt">Holidays</span>
           </div>
           <div className="div-grp-two">
-            <img src={notificationicon} className="notification-icon"/> 
-            <img src={logout} className="logout"/> 
+            <img src={notificationicon} alt="notification icon" className="notification-icon"/> 
+            <img src={logout} alt="logout" className="logout"/> 
          </div>
         </div> 
         <div className="holiday-div">
-          <img src={holidayimg} className="divimage"/>
+          <img src={holidayimg} alt="holiday" className="divimage"/>
             
         </div>
         <div className="pos">

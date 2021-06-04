@@ -5,7 +5,7 @@ function Setfooter()
 return(
     <>
       <div className="footer">
-          <img src={logo}/>
+          <img src={logo} alt="logo"/>
         </div>
     </>
 )

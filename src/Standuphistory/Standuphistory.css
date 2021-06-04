@@ -87,17 +87,33 @@ letter-spacing: 0.72px;
     color:#6C6C6C57;
     opacity: 1;
     width: 3px;
-border-right: 3px solid;
+    border-right: 3px solid;
+}
+.mark-txt{
+    padding-left:4px;
+}
+.content-new{
+    display: flex;
+    flex-direction: column;
+}
+.circle-div{
+    display: flex;
 }
 .circle {
     height:6px;
     width: 6px;
     background-color: #6C6C6C;
     border-radius: 50%;
+    margin-top: 10px;
+    margin-left: 10px;
+    
+    
   }
 .d{
-    
+   
     white-space: pre-line;
+    padding-left: 2px;
+    font: normal normal normal 16px/26px Lato;
 }
 .show{
     color: var(--unnamed-color-307fe2);

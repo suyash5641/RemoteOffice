@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React from "react";
 import './HomeScreen.css';
 import RSlogotop from '../img/RS-logo-top.svg';
 import notificationicon from '../img/notification icon.svg';
@@ -12,99 +12,34 @@ import mailicon from '../img/mail icon.svg';
 import callicon from '../img/Call icon.svg';
 import calendericon from '../img/calendericon.svg';
 import editicon from '../img/edit icon.svg';
-import userimg from '../img/UserImage.svg';
 import standup from '../img/Standup Illustrator.svg';
 import { useHistory } from "react-router-dom";
-import { useState } from 'react';
+import useHomeScreen from "./useHomeScreen";
 function HomeScreen()
 {
-    const[isOpen,setIsopen]=useState("true");
-    const[phno,setNumber]=useState("88888888");
-    const[designation,setDesign]=useState("Developer");  
-    const[standup_date,setStandupDate]=useState([]); 
-    const[today,setToday]=useState("");
-    const[prev,setPrev]=useState("");
-    const[email,setEmail]=useState("");
-    const[name,setName]=useState(""); 
-    const[sickleave,setSickleave]=useState(0);
-    const[casualleave,setCasualleave]=useState(0);
-    const[totalsickleave,setTotalSickleave]=useState(0);
-    const[totalcasualleave,setTotalCasualleave]=useState(0);
-    let history = useHistory();
-    function convert(str) {
-      const month= ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      const date = new Date(str),
-      mn = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
-    return [day,month[mn-1],date.getFullYear()].join("/");
-  }
-    useEffect(() => {
-      async function fetchStandup()
-      {
-      const access_token=localStorage.getItem('x-api-key');
-      const response=await fetch('http://localhost:8080/api/standup',{
-          method:'GET',
-          headers:{
-           'x-api-key':`${access_token}` 
-         }
-      }) 
-      const json=await response.json();
-      console.log(json[0]);
-      setStandupDate(convert(json[0].createdAt.split("T")[0]));
-      setPrev(json[0].data.split(",")[0]);
-      setToday(json[0].data.split(",")[1]);
     
-  }
-  
-  fetchStandup();
-
-  },[]) 
-  useEffect(() => {
-    async function fetchUser()
-    {
-    const access_token=localStorage.getItem('x-api-key');
-    const response=await fetch('http://localhost:8080/api/user',{
-        method:'GET',
-        headers:{
-         'x-api-key':`${access_token}` 
-       }
-    }) 
-    const json=await response.json();
-    console.log(json);
-    setNumber(json.phone);
-    setDesign(json.position);
-    setEmail(json.email); 
-    setName(json.name);
-
-
-}
-
-fetchUser();
-
-},[]) 
-useEffect(() => {
-  async function fetchLeave()
-  {
-  const access_token=localStorage.getItem('x-api-key');
-  const response=await fetch('http://localhost:8080/api/leave/stat',{
-      method:'GET',
-      headers:{
-       'x-api-key':`${access_token}` 
-     }
-  }) 
-  const json=await response.json();
-  console.log(json);
-  setSickleave(json[0].usedLeaves);
-  setCasualleave(json[1].usedLeaves);
-  setTotalSickleave(json[0].allowedLeaves);
-  setTotalCasualleave(json[1].allowedLeaves);
-
-
-}
-
-fetchLeave();
-
-},[]) 
+   
+  const {isOpen,
+    phno,
+    designation,
+    standup_date,
+    email,
+    name,
+    sickleave,
+    casualleave,
+    totalsickleave,
+    totalcasualleave,
+    otherleave,
+    totalotherleave,
+    Info,
+    startsize,
+    end,
+    setIsopen,
+    setDesign,
+    setNumber,
+   }=useHomeScreen();
+    let history=useHistory();
+    
     function handleClick() {
       history.push("/LeaveEdit");
     }
@@ -112,10 +47,10 @@ fetchLeave();
         <>
         <div className="Home-body">
           <div className="heading">
-            <img src={RSlogotop} className="RSlogotop"/> 
+            <img src={RSlogotop} alt="logo" className="RSlogotop"/> 
             <div className="div-grp-two">
-            <img src={notificationicon} className="notification-icon"/> 
-            <img src={logout}  onClick={()=>{history.push("/")}} className="logout"/> 
+            <img src={notificationicon}  alt="notification icon" className="notification-icon"/> 
+            <img src={logout} alt="logout icon" onClick={()=>{history.push("/")}} className="logout"/> 
             </div>
            </div>
            <div className="intro"> 
@@ -124,27 +59,27 @@ fetchLeave();
                <span className="intro-one">Hi, {name}
                </span><br></br>
                {isOpen && <span className="intro-two">{designation}</span>}
-               {!isOpen && <input onChange={(e)=>setDesign(e.target.value)}></input>}
+               {!isOpen && <input className="edit" defaultValue={designation} onChange={(e)=>setDesign(e.target.value)}></input>}
                </div>
                 <div className="user-img" ></div>
                </div> 
                <div className="icon-last-one">
-                <img src={callicon}/>
+                <img src={callicon} alt="call icon" />
                {isOpen && <span className="detail" >{phno}</span>} 
-               {!isOpen && <input onChange={(e)=>setNumber(e.target.value)}></input>}
+               {!isOpen && <input className="edit" defaultValue={phno} onChange={(e)=>setNumber(e.target.value)}></input>}
                </div>
                 <div className="icon-last">
                  <div className="first-div">
-                   <img src={mailicon}/>
+                   <img src={mailicon} alt="mail icon" />
                    <span className="detail" >{email}</span>
                  </div>
-                 <img src={editicon} onClick={()=>{setIsopen(!isOpen)}} className="edit-icon"/>
+                 <img src={editicon} alt="edit icon"  onClick={()=>{setIsopen(!isOpen)}} className="edit-icon"/>
                 </div>
 
            </div>
           <div className="poster">
              <div>
-                <img src={Covidimage} className="covidimage"/>
+                <img src={Covidimage} alt="covid "className="covidimage"/>
              </div>
              <div className="text-m">
                 <span  className="message">Follow Social Distancing</span>
@@ -157,7 +92,7 @@ fetchLeave();
             <div className="start">
                 <div className="start-one">
                   <div className="first-divone">
-                    <img src={sneeze} className="img-sneeze"  ></img>
+                    <img src={sneeze} alt="sneeze "  className="img-sneeze"  ></img>
                     <span className="sicklogo" >Sick Leave</span>
                   </div>
                     <span className="text-one" >
@@ -165,7 +100,7 @@ fetchLeave();
                 </div>
                 <div className="start-new1">
                   <div className="first-divone">
-                     <img src={sunbed} className="img-sunbed" ></img>
+                     <img src={sunbed} alt="sunbed"  className="img-sunbed" ></img>
                      <span className="sunbedlogo" >Casual Leave</span>
                   </div>
                      <span className="text-one" >
@@ -173,15 +108,15 @@ fetchLeave();
                 </div>
                 <div className="start-new1">
                     <div className="first-divone">
-                      <img src={annual} className="img-annual"  ></img>
+                      <img src={annual} className="img-annual" alt="annual" ></img>
                       <span className="annuallogo" >Annual Leave </span>
                     </div>
                     <span className="text-one-one" >
-                    <span className="txt-divone">13/</span>21</span>
+                    <span className="txt-divone">{otherleave}/</span>{totalotherleave}</span>
                 </div>
             </div>
             <div className="setdiv">
-                <img src={newimg} className="setimg" ></img>
+                <img src={newimg}  alt="newimg" className="setimg" ></img>
                 <span className="text-two"  onClick={handleClick}>Leaves</span>
             </div>
 
@@ -192,26 +127,46 @@ fetchLeave();
                 <div className="first-div-one">
                       <div className="full-div"> 
                         <div className="div-last-one">
-                           <img className="first-img" src={calendericon}/>
+                           <img className="first-img" alt="calender icon" src={calendericon}/>
                            <span className="first-txt">{standup_date}</span> 
                         </div>
                         <div className="new-text" >
-                          <span>What I did yesterday?</span>
-                          <br></br>
-                          <span className="text-divone">{prev}</span>
-                          <br></br> 
-                          <span>What will I do today?</span>
-                          <br></br>
-                          <span className="text-divone">{today}</span>
-                          <br></br> 
-                        
-                      </div>
+                        <span className="mark"></span><span className="mark-txt">What I did yesterday?</span>
+                         <div className="content-new">
+                              
+                              {[...Array(startsize)]?.map((ele,index)=>( 
+                                  
+                                    <div className="circle-div" key={index}>
+                                      <div className="circle" ></div> 
+                                      <span className="d"  >{Info?.data.split("**")[0]?.split("\n")[index]}</span>  
+                                    </div>
+                                   
+                  
+                              ) )}
+   
+                             
+                          </div>
+                           <span className="mark"></span><span className="mark-txt">What will I do today?</span>
+                           <div className="content-new">
+                                 
+                           {  [...Array(end)].map((ele,index)=>( 
+                                  
+                                    <div className="circle-div" key={index+10}>
+                                      <div className="circle"  ></div> 
+                                      <span className="d"  >{Info?.data.split("**")[1]?.split("\n")[index]}</span>  
+                                    </div>
+                                   
+                  
+                           ) )}
+                          </div>
+                      </div> 
+                      
                       </div>
                      
                   
                 </div> 
                 <div className="setdiv-one">
-                      <img src={standup} className="setimg-one" ></img>
+                      <img src={standup}  alt="standup" className="setimg-one" ></img>
                     <div>
                        <span className="text-three" 
                         onClick={()=>{ history.push("/Standup")}}>Standup</span>
@@ -222,7 +177,7 @@ fetchLeave();
         </div>
         <div className="ft">
             <span className="ft-text">Holidays Calender</span>
-            <img src={calendericon} className="setcalendericon"
+            <img src={calendericon} alt="calender" className="setcalendericon"
             onClick={()=>( history.push("/Holiday"))} ></img>
            
         </div>

@@ -3,15 +3,14 @@ import Setlogin from '../Setlogin';
 import Path159 from '../img/Path 159.svg';
 import './Login.css';
 import Setfooter from '../Setfooter';
-import google from './google-symbol.svg';
 import LoginHooks from './LoginHooks';
 function Login() {
   return (
     <div  className="setmain">
       <div className="setbox"> 
       <header className="upper-section"> 
-        <img src={Path159} className="image" /> 
-        <img src={Group306} className="image-two" /> 
+        <img src={Path159} alt=" icon" className="image" /> 
+        <img src={Group306} alt=" icon" className="image-two" /> 
       </header>
         <Setlogin/> 
         <div className="text-change" >

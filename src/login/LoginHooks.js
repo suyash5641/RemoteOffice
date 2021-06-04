@@ -2,10 +2,8 @@ import React from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import google from './google-symbol.svg';
 import Button from '@material-ui/core/Button';
-import { borders } from '@material-ui/system';
 import './LoginHooks.css';
-import {useParams,Link,Switch,useHistory,
-    Route} from 'react-router-dom'
+
 
 // refresh token
 import { refreshTokenSetup } from './refreshToken';
@@ -40,11 +38,11 @@ function LoginHooks() {
   return (
       <>
     <div className="symbol">
-    <Button variant='contained' size="small" textAlign="center" style={{textTransform: 'none', backgroundColor: 'white',
-     border:'1px solid #307FE2',borderRadius: "8px" } } 
-    onClick={signIn} borderRadius={20}
+    <Button variant='contained' size="small" style={{textTransform: 'none', backgroundColor: 'white',borderRadius:"8px",
+     border:'1px solid #307FE2' } } 
+    onClick={signIn} 
      > 
-     <img src={google} className="icon" ></img>
+     <img src={google} alt="google" className="icon" ></img>
      <span className="google-text" >Google</span>
    </Button>
    </div>
