@@ -23,23 +23,26 @@ export default function useHomeScreen() {
       day = ("0" + date.getDate()).slice(-2);
     return [day, month[mn - 1], date.getFullYear()].join("/");
   }
+  const url1 = "http://52.66.236.104/api/standup";
+  const url2 = "http://52.66.236.104/api/user";
+  const url3 = "http://52.66.236.104/api/leave/stat";
   useEffect(() => {
     async function fetchStandup() {
       const access_token = localStorage.getItem("x-api-key");
-      const response = await fetch("http://localhost:8080/api/standup", {
+      const response = await fetch(url1, {
         method: "GET",
         headers: {
           "x-api-key": `${access_token}`,
         },
       });
       const json = await response.json();
-      setStandupDate(convert(json[0].createdAt.split("T")[0]));
+      setStandupDate(convert(json[0]?.createdAt?.split("T")[0]));
       setValue(json[0]);
-      if (typeof json[0].data === "undefined") {
+      if (typeof json[0]?.data === "undefined") {
         console.log("This property is not defined.");
       } else {
-        setStartsize(Object.keys(json[0].data?.split("**")[0]?.split("\n")).length);
-        setEnd(Object.keys(json[0].data?.split("**")[1]?.split("\n")).length);
+        setStartsize(Object.keys(json[0]?.data?.split("**")[0]?.split("\n")).length);
+        setEnd(Object.keys(json[0]?.data?.split("**")[1]?.split("\n")).length);
       }
     }
     fetchStandup();
@@ -48,15 +51,15 @@ export default function useHomeScreen() {
   useEffect(() => {
     async function fetchUser() {
       const access_token = localStorage.getItem("x-api-key");
-      const response = await fetch("http://localhost:8080/api/user", {
+      const response = await fetch(url2, {
         method: "GET",
         headers: {
           "x-api-key": `${access_token}`,
         },
       });
       const json = await response.json();
-      //  console.log(json);
-      setNumber(json.phone);
+      //console.log(json);
+      setNumber(8299728518);
       setDesign(json.position);
       setEmail(json.email);
       setName(json.name);
@@ -67,14 +70,14 @@ export default function useHomeScreen() {
   useEffect(() => {
     async function fetchLeave() {
       const access_token = localStorage.getItem("x-api-key");
-      const response = await fetch("http://localhost:8080/api/leave/stat", {
+      const response = await fetch(url3, {
         method: "GET",
         headers: {
           "x-api-key": `${access_token}`,
         },
       });
       const json = await response.json();
-      // console.log(json);
+      //console.log(json);
       if (json[0]?.leaveType === "sick") {
         setSickleave(json[0].usedLeaves);
         setTotalSickleave(json[0].allowedLeaves);

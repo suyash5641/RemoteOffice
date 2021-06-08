@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import logout from "../img/logout.svg";
 import notificationicon from "../img/notification icon.svg";
 import DatePicker from "react-datepicker";
-import Button from "@material-ui/core/Button";
 import "react-datepicker/dist/react-datepicker.css";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import { useHistory, useParams } from "react-router";
@@ -18,12 +17,16 @@ function Leavemodify() {
   const { startDate, endDate, reason, leaveType, totalDays, a, start, setStartDate, setEndDate, setReason, setLeaveType, setVal, setStart, setTotalDays } = useLeaveform();
 
   React.useEffect(() => {
-    setTotalDays(1 + Math.floor((endDate.getTime() - startDate.getTime()) / 86400000));
+    const end_date = new Date(endDate).getTime();
+    const start_date = new Date(startDate).getTime();
+    const result = 1 + Math.ceil((end_date - start_date) / (1000 * 60 * 60 * 24));
+    setTotalDays(result);
   }, [setTotalDays, startDate, endDate]);
   useEffect(() => {
     async function fetchDetail() {
       const access_token = localStorage.getItem("x-api-key");
-      const response = await fetch("http://localhost:8080/api/leave/" + N, {
+      const url1 = "http://52.66.236.104/api/leave/";
+      const response = await fetch(url1 + N, {
         method: "GET",
         headers: {
           "x-api-key": `${access_token}`,
@@ -71,7 +74,8 @@ function Leavemodify() {
     // console.log(access_token);
     if (reason) {
       const access_token = localStorage.getItem("x-api-key");
-      await fetch("http://localhost:8080/api/leave/" + N, {
+      const url1 = "http://52.66.236.104/api/leave/";
+      await fetch(url1 + N, {
         method: "PUT",
         body: JSON.stringify(data),
         headers: {
@@ -163,7 +167,7 @@ function Leavemodify() {
           </div>
           <div>
             <label className="label-text">Total Days:</label>
-            <input type="numeric" className="day-calc" defaultValue={totalDays}></input>
+            <input type="numeric" className="day-calc" value={totalDays || 1} onChange={(e) => setTotalDays(e.target.value)}></input>
           </div>
           <div>
             <div className="label-last">

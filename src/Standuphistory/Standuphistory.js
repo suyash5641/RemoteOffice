@@ -7,7 +7,10 @@ import Edit from "../img/Edit2icon.svg";
 import "./Standuphistory.css";
 import { useHistory } from "react-router-dom";
 import useStanduphistory from "./useStanduphistory";
+import ReactMarkdown from "react-markdown";
 function Standuphistory() {
+  // const posts = resource?.posts.read();
+  // console.log(posts);
   const { standUp, state, Setstate } = useStanduphistory();
   let history = useHistory();
   function convert(str) {
@@ -70,7 +73,7 @@ function Standuphistory() {
         {standUp.map(
           (c, k) =>
             k < 5 && (
-              <div id={k} className="details">
+              <div id={k} className="details" key={standUp[k].id}>
                 <div className="text-grpfirst">
                   <div className="text-grpfirst">
                     <img src={calendericon} alt="calender icon" className="divimgone"></img>
@@ -80,23 +83,20 @@ function Standuphistory() {
                 </div>
                 <div className="prev-standup">
                   <div className="standup-content">
-                    <span className="mark"></span>
-                    <span className="mark-txt">What I did yesterday?</span>
+                    <blockquote>What I did yesterday?</blockquote>
                     <div className="content-new">
                       {[...Array(Object.keys(standUp[k].data?.split("**")[0]?.split("\n")).length)].map((ele, index) => (
-                        <div className="circle-div">
-                          <div className="circle"></div>
-                          <span className="d">{standUp[k].data.split("**")[0].split("\n")[index]}</span>
+                        <div className="circle-div" key={standUp[k].data?.split("**")[0].split("\n")[index]}>
+                          <ReactMarkdown className="d">{standUp[k].data.split("**")[0].split("\n")[index]}</ReactMarkdown>
                         </div>
                       ))}
                     </div>
-                    <span className="mark"></span>
-                    <span className="mark-txt">What will I do today?</span>
+
+                    <blockquote>What will I do today?</blockquote>
                     <div className="content-new">
                       {[...Array(Object.keys(standUp[k].data?.split("**")[1]?.split("\n")).length)].map((ele, index) => (
-                        <div className="circle-div">
-                          <div className="circle"></div>
-                          <span className="d">{standUp[k]?.data.split("**")[1]?.split("\n")[index]}</span>
+                        <div className="circle-div" key={standUp[k].data?.split("**")[1].split("\n")[index]}>
+                          <ReactMarkdown className="d">{standUp[k]?.data.split("**")[1]?.split("\n")[index]}</ReactMarkdown>
                         </div>
                       ))}
                     </div>

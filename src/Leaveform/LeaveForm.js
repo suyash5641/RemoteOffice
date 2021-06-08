@@ -3,7 +3,6 @@ import "./LeaveForm.css";
 import logout from "../img/logout.svg";
 import notificationicon from "../img/notification icon.svg";
 import DatePicker from "react-datepicker";
-import Button from "@material-ui/core/Button";
 import "react-datepicker/dist/react-datepicker.css";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import { useHistory } from "react-router";
@@ -17,8 +16,10 @@ function LeaveForm() {
 
   React.useEffect(() => {
     //calcutae total days
-    setTotalDays(1 + Math.floor((endDate.getTime() - startDate.getTime()) / 86400000));
-    //  console.log(totalDays);
+    const end_date = new Date(endDate).getTime();
+    const start_date = new Date(startDate).getTime();
+    const result = 1 + Math.ceil((end_date - start_date) / (1000 * 60 * 60 * 24));
+    setTotalDays(result);
   }, [setTotalDays, startDate, endDate]);
 
   function handle() {
@@ -36,8 +37,8 @@ function LeaveForm() {
     setEndDate(event);
   }
   // const [popupOpen, setPopupOpen] = useState(false);
-
-  const Submit = async () => {
+  //console.log(totalDays);
+  const Submit = React.useCallback(async () => {
     const access_token = localStorage.getItem("x-api-key");
 
     const data = {
@@ -46,7 +47,7 @@ function LeaveForm() {
       leaveType: leaveType,
       reason: reason,
     };
-    // console.log(data);
+    console.log(data);
 
     // console.log(access_token);
     function handleErrors(response) {
@@ -54,11 +55,11 @@ function LeaveForm() {
       return response;
     }
     if (reason) {
-      await fetch("http://localhost:8080/api/leave", {
+      const url1 = "http://52.66.236.104/api/leave";
+      await fetch(url1, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
-          // "Content-type":"application/json;charset=UTF-8",
           "x-api-key": `${access_token}`,
         },
       })
@@ -71,7 +72,7 @@ function LeaveForm() {
           alert("please fill all the details");
         });
     } else alert("please fill all the details");
-  };
+  }, [startDate, endDate, leaveType, reason, history]);
 
   return (
     <div className="main-body">
@@ -145,7 +146,7 @@ function LeaveForm() {
           </div>
           <div>
             <label className="label-textdays">Total Days:</label>
-            <input type="numeric" className="day-calc" defaultValue={totalDays}></input>
+            <input type="numeric" className="day-calc" id="myInput" value={totalDays || 1} onChange={(e) => setTotalDays(e.target.value)}></input>
           </div>
           <div>
             <div className="label-last">

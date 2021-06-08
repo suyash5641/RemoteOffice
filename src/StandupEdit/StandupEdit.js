@@ -22,7 +22,8 @@ function StandupEdit() {
     };
     if (yesterday && today) {
       const access_token = localStorage.getItem("x-api-key");
-      await fetch("http://localhost:8080/api/standup/" + Id, {
+      const url1 = "http://52.66.236.104/api/standup/";
+      await fetch(url1 + Id, {
         method: "PUT",
         headers: {
           "x-api-key": `${access_token}`,

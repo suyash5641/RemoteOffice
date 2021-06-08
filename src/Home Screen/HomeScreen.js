@@ -15,6 +15,7 @@ import editicon from "../img/edit icon.svg";
 import standup from "../img/Standup Illustrator.svg";
 import { useHistory } from "react-router-dom";
 import useHomeScreen from "./useHomeScreen";
+import ReactMarkdown from "react-markdown";
 function HomeScreen() {
   const {
     isOpen,
@@ -64,13 +65,13 @@ function HomeScreen() {
               <span className="intro-one">Hi, {name}</span>
               <br></br>
               {isOpen && <span className="intro-two">{designation}</span>}
-              {!isOpen && <input className="edit" defaultValue={designation} onChange={(e) => setDesign(e.target.value)}></input>}
+              {!isOpen && <input className="edit-design" defaultValue={designation} onChange={(e) => setDesign(e.target.value)}></input>}
             </div>
             <div className="user-img"></div>
           </div>
           <div className="icon-last-one">
             <img src={callicon} alt="call icon" />
-            {isOpen && <span className="detail">{phno}</span>}
+            {isOpen && <span className="contactdetail">{phno}</span>}
             {!isOpen && <input className="edit" defaultValue={phno} onChange={(e) => setNumber(e.target.value)}></input>}
           </div>
           <div className="icon-last">
@@ -149,23 +150,20 @@ function HomeScreen() {
                   <span className="first-txt">{standup_date}</span>
                 </div>
                 <div className="new-text">
-                  <span className="mark"></span>
-                  <span className="mark-txt">What I did yesterday?</span>
+                  <blockquote>What I did yesterday?</blockquote>
                   <div className="content-new">
                     {[...Array(startsize)]?.map((ele, index) => (
                       <div className="circle-div" key={index}>
-                        <div className="circle"></div>
-                        <span className="d">{Info?.data.split("**")[0]?.split("\n")[index]}</span>
+                        <ReactMarkdown className="d">{Info?.data.split("**")[0]?.split("\n")[index]}</ReactMarkdown>
                       </div>
                     ))}
                   </div>
-                  <span className="mark"></span>
-                  <span className="mark-txt">What will I do today?</span>
+
+                  <blockquote>What will I do today?</blockquote>
                   <div className="content-new">
                     {[...Array(end)].map((ele, index) => (
                       <div className="circle-div" key={index + 10}>
-                        <div className="circle"></div>
-                        <span className="d">{Info?.data.split("**")[1]?.split("\n")[index]}</span>
+                        <ReactMarkdown className="d">{Info?.data.split("**")[1]?.split("\n")[index]}</ReactMarkdown>
                       </div>
                     ))}
                   </div>

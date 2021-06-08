@@ -1,7 +1,7 @@
 import "./Setlogin.css";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import ButtonComponent from "./sdk/ButtonComponent";
+import ButtonComponent from "../sdk/ButtonComponent";
 //import * as ReactBootstrap from 'react-bootstrap';
 function Setlogin() {
   const [userid, setUserid] = useState("");
@@ -21,7 +21,8 @@ function Setlogin() {
     };
     //setLoading(true);
     //console.log(userinfo);
-    await fetch("http://localhost:8080/api/login", {
+    const url = "http://52.66.236.104/api/login";
+    await fetch(url, {
       method: "POST",
       body: JSON.stringify(userinfo),
     })

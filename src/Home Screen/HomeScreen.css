@@ -63,6 +63,13 @@
   border-radius: 8px;
   margin-left: 4px;
 }
+.edit-design {
+  padding-left: 5px;
+  color: #6c6c6c;
+  background-color: #f5f9ff;
+  border-radius: 8px;
+  margin-left: 13px;
+}
 .user-img {
   width: 74px;
   height: 74px;
@@ -76,11 +83,21 @@
 }
 .icon-last-one {
   margin-left: 15px;
+  display: flex;
 }
 .icon-last {
   margin-left: 15px;
   display: flex;
   justify-content: space-between;
+}
+.contactdetail {
+  text-align: left;
+  font: normal normal normal 16px/25px Lato;
+  letter-spacing: 0.72px;
+  color: #6c6c6c;
+  opacity: 1;
+  padding-left: 7px;
+  margin-top: 4px;
 }
 .detail {
   text-align: left;
@@ -88,8 +105,7 @@
   letter-spacing: 0.72px;
   color: #6c6c6c;
   opacity: 1;
-  height: 19px;
-  padding-left: 7px;
+  padding-left: 9px;
   margin-top: 4px;
 }
 .poster {
@@ -135,7 +151,7 @@
   margin-top: 20px;
   width: 49vw;
   opacity: 1;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: auto;
   height: 84px;
 }
@@ -346,4 +362,21 @@
   opacity: 1;
   margin-top: 21px;
   margin-right: 17px;
+}
+blockquote {
+  border-left: 3px solid #6c6c6c57;
+  margin-left: 0px;
+  width: 100%;
+  /* height: 21px; */
+  padding-left: 4px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+ul {
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+}
+li {
+  margin-left: -10px;
 }

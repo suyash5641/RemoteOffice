@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 function ButtonComponent(props) {
+  //console.log("this was run");
   return (
     <Button
       onClick={props.onClick}

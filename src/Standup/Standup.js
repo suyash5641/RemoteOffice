@@ -17,7 +17,8 @@ function Standup() {
       data: yesterday + "**" + today,
     };
     if (yesterday && today) {
-      await fetch("http://localhost:8080/api/standup", {
+      const url1 = "http://52.66.236.104/api/standup";
+      await fetch(url1, {
         method: "POST",
         body: JSON.stringify(info),
         headers: {

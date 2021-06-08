@@ -6,6 +6,7 @@ section {
 .content {
   opacity: 1;
   background: #f5f9ff;
+  min-height: 100vh;
 }
 .div-grp {
   margin-left: 10px;

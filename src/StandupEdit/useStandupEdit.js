@@ -6,7 +6,8 @@ export default function useStandupEdit({ Id }) {
     async function EditStandup() {
       // console.log(Id);
       const access_token = localStorage.getItem("x-api-key");
-      const response = await fetch("http://localhost:8080/api/standup/" + Id, {
+      const url1 = "http://52.66.236.104/api/standup/";
+      const response = await fetch(url1 + Id, {
         method: "GET",
         headers: {
           "x-api-key": `${access_token}`,
